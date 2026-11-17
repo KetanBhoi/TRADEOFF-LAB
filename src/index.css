@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --theme-primary: #ea580c;
+    --theme-primary-hover: #c2410c;
+    --theme-primary-light: #ffedd5;
+    --theme-accent: #f97316;
+    --theme-bg-subtle: #fff7ed;
+    --theme-border-subtle: #fed7aa;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes moduleEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-module-enter {
+  animation: moduleEnter 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom theme overrides via data-theme attribute */
+[data-theme="marathon"] {
+  --theme-primary: #ea580c;
+  --theme-primary-hover: #c2410c;
+  --theme-primary-light: #ffedd5;
+  --theme-accent: #f97316;
+  --theme-bg-subtle: #fff7ed;
+  --theme-border-subtle: #ffedd5;
+}
+
+[data-theme="collegiate"] {
+  --theme-primary: #1d4ed8;
+  --theme-primary-hover: #1e40af;
+  --theme-primary-light: #dbeafe;
+  --theme-accent: #d97706;
+  --theme-bg-subtle: #eff6ff;
+  --theme-border-subtle: #bfdbfe;
+}
+
+[data-theme="slate"] {
+  --theme-primary: #0f172a;
+  --theme-primary-hover: #1e293b;
+  --theme-primary-light: #f1f5f9;
+  --theme-accent: #0d9488;
+  --theme-bg-subtle: #f8fafc;
+  --theme-border-subtle: #e2e8f0;
+}
+
+[data-theme="emerald"] {
+  --theme-primary: #059669;
+  --theme-primary-hover: #047857;
+  --theme-primary-light: #d1fae5;
+  --theme-accent: #10b981;
+  --theme-bg-subtle: #ecfdf5;
+  --theme-border-subtle: #a7f3d0;
+}
+
+[data-theme="crimson"] {
+  --theme-primary: #be123c;
+  --theme-primary-hover: #9f1239;
+  --theme-primary-light: #ffe4e6;
+  --theme-accent: #e11d48;
+  --theme-bg-subtle: #fff1f2;
+  --theme-border-subtle: #fecdd3;
+}
+
+/* Print to PDF Styling */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #printable-export-document,
+  #printable-export-document * {
+    visibility: visible;
+  }
+
+  #printable-export-document {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 24px;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    display: block !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
