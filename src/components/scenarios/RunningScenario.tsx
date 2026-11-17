@@ -245,7 +245,7 @@ export const RunningScenario: React.FC<RunningScenarioProps> = ({
                   <Sparkles className="w-3 h-3 text-orange-600" />
                   Weekly Pace Adaptation Trajectory Sparkline
                 </span>
-                <span className="font-mono text-[10px] text-orange-800 bg-white px-1.5 py-0.2 rounded border border-orange-200">
+                <span className="font-mono text-[10px] text-orange-800 bg-white px-1.5 py-0.5 rounded border border-orange-200">
                   {formatPace(model.weeklyMilestones[0]?.projectedPaceSec || 0)} → {formatPace(model.targetPaceSeconds)}
                 </span>
               </div>

@@ -28,7 +28,7 @@ export const KeyboardShortcutsModal: React.FC<KeyboardShortcutsModalProps> = ({
     { keys: '?', desc: 'Show / hide this Keyboard Shortcuts cheatsheet' },
     { keys: 'Alt + ← / →', desc: 'Step backward or forward through all 34 modules' },
     { keys: 'Alt + 1 .. 6', desc: 'Jump directly to Pinned Favorite modules 1 through 6' },
-    { keys: 'P', desc: 'Pause or resume live 2-second NSE price simulation ticks' },
+    { keys: 'F', desc: 'Pause or resume live 2-second NSE price simulation ticks' },
     { keys: 'Esc', desc: 'Close active overlay or modal' },
   ];
 

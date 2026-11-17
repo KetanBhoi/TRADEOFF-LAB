@@ -166,7 +166,7 @@ export const CustomScenario: React.FC<CustomScenarioProps> = ({
                   <Sparkles className="w-3 h-3 text-indigo-600" />
                   Real-Time Primary Lever Sensitivity Sparkline
                 </span>
-                <span className="font-mono text-[10px] text-indigo-800 bg-white px-1.5 py-0.2 rounded border border-indigo-200">
+                <span className="font-mono text-[10px] text-indigo-800 bg-white px-1.5 py-0.5 rounded border border-indigo-200">
                   Current: {model.computedValue.toFixed(1)} {params.goalMetricUnit}
                 </span>
               </div>

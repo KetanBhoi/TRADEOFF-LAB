@@ -191,7 +191,12 @@ export default function App() {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const [revertToast, setRevertToast] = useState<string | null>(null);
   const [exportToast, setExportToast] = useState<string | null>(null);
+  const [tradingToast, setTradingToast] = useState<{
+    message: string;
+    severity: 'success' | 'info' | 'warning' | 'danger';
+  } | null>(null);
   const exportToastTimerRef = useRef<number | null>(null);
+  const tradingToastTimerRef = useRef<number | null>(null);
 
   const triggerExportToast = (message: string) => {
     setExportToast(message);
@@ -199,9 +204,19 @@ export default function App() {
     exportToastTimerRef.current = window.setTimeout(() => setExportToast(null), 4000);
   };
 
+  const triggerTradingToast = (
+    message: string,
+    severity: 'success' | 'info' | 'warning' | 'danger' = 'info'
+  ) => {
+    setTradingToast({ message, severity });
+    if (tradingToastTimerRef.current) window.clearTimeout(tradingToastTimerRef.current);
+    tradingToastTimerRef.current = window.setTimeout(() => setTradingToast(null), 4500);
+  };
+
   useEffect(() => {
     return () => {
       if (exportToastTimerRef.current) window.clearTimeout(exportToastTimerRef.current);
+      if (tradingToastTimerRef.current) window.clearTimeout(tradingToastTimerRef.current);
     };
   }, []);
 
@@ -463,6 +478,28 @@ export default function App() {
 
       const key = e.key.toLowerCase();
 
+      if (e.key === 'Escape') {
+        setIsHistoryOpen(false);
+        setIsSplitViewOpen(false);
+        setIsSanityCheckOpen(false);
+        setIsGoogleSearchOpen(false);
+        setIsMonteCarloOpen(false);
+        setIsGoalSeekOpen(false);
+        setIsPresetsOpen(false);
+        setIsDecisionReportOpen(false);
+        setIsPortfolioOpen(false);
+        setIsTornadoOpen(false);
+        setIsCommandPaletteOpen(false);
+        setIsGuideOpen(false);
+        setIsExportOpen(false);
+        return;
+      }
+
+      // Prevent single-letter global shortcuts from stacking a second modal when any modal/drawer is already open
+      if (document.querySelector('.fixed.inset-0')) {
+        return;
+      }
+
       if (key === 'k' || key === '/') {
         e.preventDefault();
         setIsCommandPaletteOpen((prev) => !prev);
@@ -499,20 +536,6 @@ export default function App() {
       } else if (key === 'e') {
         e.preventDefault();
         setIsExportOpen((prev) => !prev);
-      } else if (e.key === 'Escape') {
-        setIsHistoryOpen(false);
-        setIsSplitViewOpen(false);
-        setIsSanityCheckOpen(false);
-        setIsGoogleSearchOpen(false);
-        setIsMonteCarloOpen(false);
-        setIsGoalSeekOpen(false);
-        setIsPresetsOpen(false);
-        setIsDecisionReportOpen(false);
-        setIsPortfolioOpen(false);
-        setIsTornadoOpen(false);
-        setIsCommandPaletteOpen(false);
-        setIsGuideOpen(false);
-        setIsExportOpen(false);
       }
     };
 
@@ -564,33 +587,63 @@ export default function App() {
         historyCount={activeHistoryCount}
       />
 
-      {/* Floating Revert Toast Notification */}
-      {revertToast && (
-        <div className="fixed bottom-6 right-6 z-50 bg-slate-900 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-xl border border-slate-700 flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2">
-          <RotateCcw className="w-3.5 h-3.5 text-orange-400" />
-          <span>{revertToast}</span>
-        </div>
-      )}
+      {/* Unified Stacked Floating Toast Container (Prevents overlapping notifications) */}
+      {(revertToast || exportToast || tradingToast) && (
+        <div className="fixed bottom-6 right-6 z-[70] flex flex-col items-end gap-2 max-w-md pointer-events-none">
+          {revertToast && (
+            <div className="pointer-events-auto bg-slate-900 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-xl border border-slate-700 flex items-center gap-2">
+              <RotateCcw className="w-3.5 h-3.5 text-orange-400 shrink-0" />
+              <span>{revertToast}</span>
+            </div>
+          )}
 
-      {/* Floating Export Success Toast Notification */}
-      {exportToast && (
-        <div
-          role="status"
-          aria-live="polite"
-          className="fixed bottom-6 right-6 z-[60] max-w-md bg-emerald-950 text-emerald-50 text-xs font-semibold px-4 py-3 rounded-xl shadow-2xl border border-emerald-700 flex items-center justify-between gap-3 animate-in fade-in slide-in-from-bottom-2"
-        >
-          <div className="flex items-center gap-2.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>{exportToast}</span>
-          </div>
-          <button
-            type="button"
-            onClick={() => setExportToast(null)}
-            aria-label="Dismiss notification"
-            className="text-emerald-300 hover:text-white shrink-0"
-          >
-            <X className="w-3.5 h-3.5" />
-          </button>
+          {tradingToast && (
+            <div
+              role="status"
+              aria-live="polite"
+              className={`pointer-events-auto px-4 py-3 rounded-xl shadow-2xl border text-xs font-semibold flex items-center justify-between gap-3 ${
+                tradingToast.severity === 'danger'
+                  ? 'bg-rose-950 text-rose-50 border-rose-700'
+                  : tradingToast.severity === 'success'
+                  ? 'bg-emerald-950 text-emerald-50 border-emerald-700'
+                  : 'bg-slate-900 text-white border-slate-700'
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                {tradingToast.severity === 'success' && <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />}
+                <span>{tradingToast.message}</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setTradingToast(null)}
+                aria-label="Dismiss notification"
+                className="text-slate-300 hover:text-white shrink-0"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
+
+          {exportToast && (
+            <div
+              role="status"
+              aria-live="polite"
+              className="pointer-events-auto bg-emerald-950 text-emerald-50 text-xs font-semibold px-4 py-3 rounded-xl shadow-2xl border border-emerald-700 flex items-center justify-between gap-3"
+            >
+              <div className="flex items-center gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>{exportToast}</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setExportToast(null)}
+                aria-label="Dismiss notification"
+                className="text-emerald-300 hover:text-white shrink-0"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
         </div>
       )}
 
@@ -689,7 +742,7 @@ export default function App() {
               >
                 <CheckCircle2 className="w-3.5 h-3.5 text-slate-500 shrink-0" />
                 <span>Checklist</span>
-                <span className="font-mono text-[10px] text-slate-700 bg-slate-100 px-1.5 py-0.2 rounded border border-slate-200">
+                <span className="font-mono text-[10px] text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200">
                   {completedTasksCount}/10
                 </span>
               </button>
@@ -752,6 +805,7 @@ export default function App() {
             onOpenExport={() => setIsExportOpen(true)}
             onOpenHistory={() => setIsHistoryOpen(true)}
             onOpenSplitView={() => setIsSplitViewOpen(true)}
+            onNotify={triggerTradingToast}
           />
         )}
 

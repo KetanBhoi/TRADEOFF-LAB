@@ -333,7 +333,7 @@ export const StrategyVersioningTab: React.FC<StrategyVersioningTabProps> = ({ on
                 <div className="flex items-center gap-2">
                   <span className="font-mono font-bold text-slate-900">{ver.versionNumber}</span>
                   <span className="text-[10px] text-slate-400">{ver.timestamp}</span>
-                  <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 font-semibold">
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-semibold">
                     {ver.author}
                   </span>
                 </div>

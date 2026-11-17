@@ -117,6 +117,7 @@ interface TradingScenarioProps {
   onOpenExport?: () => void;
   onOpenHistory?: () => void;
   onOpenSplitView?: () => void;
+  onNotify?: (message: string, severity?: 'success' | 'info' | 'warning' | 'danger') => void;
 }
 
 export const TradingScenario: React.FC<TradingScenarioProps> = ({
@@ -124,6 +125,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
   onOpenExport,
   onOpenHistory,
   onOpenSplitView,
+  onNotify,
 }) => {
   // Navigation Tabs with localStorage persistence
   type TradingTabId =
@@ -198,6 +200,10 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
     message: string,
     severity: 'success' | 'info' | 'warning' | 'danger' = 'info'
   ) => {
+    if (onNotify) {
+      onNotify(message, severity);
+      return;
+    }
     setToast({ message, severity });
     if (toastTimerRef.current) window.clearTimeout(toastTimerRef.current);
     toastTimerRef.current = window.setTimeout(() => setToast(null), 4500);
@@ -329,7 +335,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
     activeTabRef.current = activeTab;
   }, [pinnedTabIds, activeTab]);
 
-  // Keyboard shortcuts for Trading Desk: J Spotlight, ? Shortcuts, P Pause, Alt+Left/Right Step, Alt+1..6 Pinned
+  // Keyboard shortcuts for Trading Desk: J Spotlight, ? Shortcuts, F Pause Feed, Alt+Left/Right Step, Alt+1..6 Pinned
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
@@ -343,14 +349,30 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
         return;
       }
 
+      if (e.key === 'Escape') {
+        setIsSpotlightOpen(false);
+        setIsShortcutsModalOpen(false);
+        setIsKillSwitchConfirmOpen(false);
+        setIsBrokerModalOpen(false);
+        setIsAllotmentModalOpen(false);
+        setIsConfirmOrderModalOpen(false);
+        setIsGuideModalOpen(false);
+        setIsEducationModalOpen(false);
+        setIsExecutiveBriefOpen(false);
+        return;
+      }
+
       if (!e.metaKey && !e.ctrlKey && !e.altKey) {
+        if (document.querySelector('.fixed.inset-0')) {
+          return;
+        }
         if (e.key.toLowerCase() === 'j') {
           e.preventDefault();
           setIsSpotlightOpen((prev) => !prev);
         } else if (e.key === '?') {
           e.preventDefault();
           setIsShortcutsModalOpen((prev) => !prev);
-        } else if (e.key.toLowerCase() === 'p') {
+        } else if (e.key.toLowerCase() === 'f') {
           e.preventDefault();
           setIsFeedPaused((prev) => !prev);
         }
@@ -1070,7 +1092,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
         <div className="min-w-0">
           <div className="flex items-center gap-2 mb-1.5 flex-wrap">
             <span className="px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-900 text-white rounded whitespace-nowrap">
-              DECISION LAB #6
+              DECISION LAB #5
             </span>
             <span className="px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 rounded whitespace-nowrap">
               LIVE TRADING &amp; IPO ALLOCATION DESK
@@ -1235,7 +1257,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
             >
               <Search className="w-3.5 h-3.5 text-indigo-400" />
               <span>Spotlight Jump</span>
-              <kbd className="px-1.5 py-0.2 text-[10px] font-mono bg-slate-900 text-slate-300 border border-slate-700 rounded">J</kbd>
+              <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-slate-900 text-slate-300 border border-slate-700 rounded">J</kbd>
             </button>
 
             <button
@@ -1256,7 +1278,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                   ? 'bg-amber-950/60 text-amber-300 border-amber-700/70 hover:bg-amber-900/60'
                   : 'bg-emerald-950/60 text-emerald-300 border-emerald-700/70 hover:bg-emerald-900/60'
               }`}
-              title="Pause or resume simulated 2-second price ticks"
+              title="Pause or resume simulated 2-second price ticks (Press 'F')"
             >
               {isFeedPaused ? (
                 <>
@@ -1329,7 +1351,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
           ))}
         </div>
         <span className="text-[11px] text-slate-500 font-mono whitespace-nowrap shrink-0">
-          Tip: Press J (Search), ? (Shortcuts), Alt+1..6 (Pins)
+          Tip: Press J (Search), ? (Shortcuts), F (Pause Feed), Alt+1..6 (Pins)
         </span>
       </div>
 
@@ -1499,7 +1521,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                 >
                   <span>{tab.label}</span>
                   <span
-                    className={`text-[9px] font-mono px-1.5 py-0.2 rounded ${
+                    className={`text-[9px] font-mono px-1.5 py-0.5 rounded ${
                       isActive ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-500'
                     }`}
                   >
@@ -1564,7 +1586,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
 
           {/* IPO Filter Tabs */}
           <div className="flex items-center justify-between gap-3 flex-wrap">
-            <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-lg border border-slate-200/80 text-xs font-semibold">
+            <div className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100 rounded-lg border border-slate-200/80 text-xs font-semibold">
               {(['all', 'open', 'listed', 'upcoming'] as const).map((f) => (
                 <button
                   key={f}

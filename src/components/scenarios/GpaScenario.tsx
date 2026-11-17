@@ -184,7 +184,7 @@ export const GpaScenario: React.FC<GpaScenarioProps> = ({
                   <Sparkles className="w-3 h-3 text-blue-600" />
                   Final Exam Score Needed Sensitivity
                 </span>
-                <span className="font-mono text-[10px] text-blue-800 bg-white px-1.5 py-0.2 rounded border border-blue-200">
+                <span className="font-mono text-[10px] text-blue-800 bg-white px-1.5 py-0.5 rounded border border-blue-200">
                   Target {params.targetLetterGrade}: <strong>{Math.round(model.requiredFinalScore)}%</strong>
                 </span>
               </div>

@@ -75,7 +75,7 @@ export const RechartsSparkline: React.FC<RechartsSparklineProps> = ({
         <div className="flex items-center justify-between text-[10px] text-slate-500 font-medium">
           {label && <span className="truncate">{label}</span>}
           {showCurrentBadge && activeY !== undefined && (
-            <span className="font-mono text-slate-700 bg-white px-1.5 py-0.2 rounded border border-slate-200/90 shadow-2xs tabular-nums ml-auto">
+            <span className="font-mono text-slate-700 bg-white px-1.5 py-0.5 rounded border border-slate-200/90 shadow-2xs tabular-nums ml-auto">
               Live: <strong className="text-slate-900">{valueFormatter(activeY)}{unit}</strong>
             </span>
           )}

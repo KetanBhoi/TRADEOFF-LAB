@@ -255,7 +255,7 @@ export const MarketNewsTab: React.FC<MarketNewsTabProps> = ({ holdings, onTradeS
                       </div>
                       <div className="flex justify-between items-center pt-1">
                         <span className="text-slate-500">Guidance Verdict:</span>
-                        <span className="px-1.5 py-0.2 text-[9px] font-bold bg-emerald-100 text-emerald-800 rounded">
+                        <span className="px-1.5 py-0.5 text-[9px] font-bold bg-emerald-100 text-emerald-800 rounded">
                           {earn.guidanceVerdict}
                         </span>
                       </div>

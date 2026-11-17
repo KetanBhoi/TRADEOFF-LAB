@@ -178,7 +178,7 @@ export const BudgetScenario: React.FC<BudgetScenarioProps> = ({
                   <Sparkles className="w-3 h-3 text-amber-600" />
                   Live Net Margin / Break-Even Trajectory
                 </span>
-                <span className={`font-mono text-[10px] px-1.5 py-0.2 rounded border ${
+                <span className={`font-mono text-[10px] px-1.5 py-0.5 rounded border ${
                   model.netMargin >= 0
                     ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
                     : 'text-rose-700 bg-rose-50 border-rose-200'

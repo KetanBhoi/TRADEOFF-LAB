@@ -195,7 +195,7 @@ export const HousingScenario: React.FC<HousingScenarioProps> = ({
                   <Sparkles className="w-3 h-3 text-emerald-600" />
                   12-Month Net Savings Trajectory
                 </span>
-                <span className="font-mono text-[10px] text-emerald-800 bg-white px-1.5 py-0.2 rounded border border-emerald-200">
+                <span className="font-mono text-[10px] text-emerald-800 bg-white px-1.5 py-0.5 rounded border border-emerald-200">
                   {monthlySavingsTrajectory[11]?.formattedY || '$0'}
                 </span>
               </div>

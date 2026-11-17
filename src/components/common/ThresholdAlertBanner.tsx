@@ -59,7 +59,7 @@ export const ThresholdAlertBanner: React.FC<ThresholdAlertBannerProps> = ({
                   : `${violations.length} Boundary Limits Exceeded`}
               </h4>
               <span
-                className={`px-1.5 py-0.2 text-[10px] font-mono font-bold rounded ${
+                className={`px-1.5 py-0.5 text-[10px] font-mono font-bold rounded ${
                   hasDanger
                     ? 'bg-rose-200/90 text-rose-900 border border-rose-300'
                     : 'bg-amber-200/90 text-amber-900 border border-amber-300'

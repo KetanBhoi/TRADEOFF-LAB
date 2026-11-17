@@ -89,7 +89,7 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
 
             {/* Personality Badge */}
             <span
-              className={`text-[9px] font-mono px-1.5 py-0.2 rounded font-medium transition-colors ${
+              className={`text-[9px] font-mono px-1.5 py-0.5 rounded font-medium transition-colors ${
                 isActive
                   ? 'bg-white/20 text-slate-200'
                   : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200'

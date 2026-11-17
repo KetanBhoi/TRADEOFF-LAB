@@ -160,7 +160,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="text-sm font-bold tracking-tight text-slate-900 block leading-tight whitespace-nowrap">
                   TradeOff Lab
                 </span>
-                <span className="px-1.5 py-0.2 text-[9px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-600 rounded border border-slate-200 shrink-0">
+                <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-600 rounded border border-slate-200 shrink-0">
                   PRO
                 </span>
               </div>
@@ -203,7 +203,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Search className="w-3.5 h-3.5 text-slate-500 shrink-0" />
             <span className="hidden xl:inline text-slate-600">Commands</span>
-            <kbd className="hidden sm:inline-flex items-center justify-center px-1.5 py-0.2 text-[9px] font-mono font-bold bg-white text-slate-700 border border-slate-200 rounded">
+            <kbd className="hidden sm:inline-flex items-center justify-center px-1.5 py-0.5 text-[9px] font-mono font-bold bg-white text-slate-700 border border-slate-200 rounded">
               ⌘K
             </kbd>
           </button>
@@ -263,7 +263,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Download className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
             <span className="hidden sm:inline font-bold">Export</span>
-            <kbd className="hidden xl:inline-flex items-center justify-center px-1.5 py-0.2 text-[9px] font-mono font-bold bg-white text-emerald-800 border border-emerald-200 rounded">
+            <kbd className="hidden xl:inline-flex items-center justify-center px-1.5 py-0.5 text-[9px] font-mono font-bold bg-white text-emerald-800 border border-emerald-200 rounded">
               E
             </kbd>
           </button>
@@ -278,11 +278,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             <History className="w-3.5 h-3.5 text-slate-500 shrink-0" />
             <span className="hidden xl:inline">History</span>
             {historyCount > 0 && (
-              <span className="font-mono text-[10px] text-slate-700 bg-slate-100 px-1 py-0.2 rounded border border-slate-200">
+              <span className="font-mono text-[10px] text-slate-700 bg-slate-100 px-1 py-0.5 rounded border border-slate-200">
                 {historyCount}
               </span>
             )}
-            <kbd className="hidden xl:inline-flex items-center justify-center px-1.5 py-0.2 text-[9px] font-mono font-bold bg-slate-100 text-slate-600 border border-slate-200 rounded">
+            <kbd className="hidden xl:inline-flex items-center justify-center px-1.5 py-0.5 text-[9px] font-mono font-bold bg-slate-100 text-slate-600 border border-slate-200 rounded">
               H
             </kbd>
           </button>

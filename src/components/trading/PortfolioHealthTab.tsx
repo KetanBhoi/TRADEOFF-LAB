@@ -73,12 +73,13 @@ export const PortfolioHealthTab: React.FC<PortfolioHealthTabProps> = ({
           </div>
 
           {/* Broker Filter Segment */}
-          <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-lg border border-slate-200 text-xs font-semibold">
+          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100 rounded-lg border border-slate-200 text-xs font-semibold">
             {['ALL', 'zerodha', 'upstox', 'angelone', 'paper'].map((b) => (
               <button
                 key={b}
+                type="button"
                 onClick={() => setBrokerFilter(b)}
-                className={`px-2.5 py-1 rounded-md transition-all uppercase text-[11px] ${
+                className={`px-2.5 py-1 rounded-md transition-all uppercase text-[11px] whitespace-nowrap shrink-0 ${
                   brokerFilter === b
                     ? 'bg-white text-slate-900 shadow-2xs font-bold'
                     : 'text-slate-500 hover:text-slate-900'

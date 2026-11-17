@@ -262,7 +262,7 @@ export const CommunityDiscussionTab: React.FC = () => {
                       <span className="font-bold text-xs text-slate-900">{post.authorName}</span>
                       <span className="text-[10px] text-slate-400">{post.authorHandle}</span>
                       {post.isTradeVerified && (
-                        <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-emerald-100 text-emerald-800 flex items-center gap-0.5">
+                        <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-100 text-emerald-800 flex items-center gap-0.5">
                           <ShieldCheck className="w-2.5 h-2.5 text-emerald-600" /> Verified
                         </span>
                       )}

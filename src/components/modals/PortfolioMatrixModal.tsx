@@ -229,7 +229,7 @@ export const PortfolioMatrixModal: React.FC<PortfolioMatrixModalProps> = ({
             <div className="p-3.5 rounded-xl border border-slate-200 bg-white space-y-1.5 shadow-2xs">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-orange-900">Running Pace</span>
-                <span className="text-[10px] font-mono text-orange-700 bg-orange-50 px-1.5 py-0.2 rounded border border-orange-200">
+                <span className="text-[10px] font-mono text-orange-700 bg-orange-50 px-1.5 py-0.5 rounded border border-orange-200">
                   {runningModel.shavePerWeekSeconds.toFixed(1)}s/wk
                 </span>
               </div>
@@ -242,7 +242,7 @@ export const PortfolioMatrixModal: React.FC<PortfolioMatrixModalProps> = ({
             <div className="p-3.5 rounded-xl border border-slate-200 bg-white space-y-1.5 shadow-2xs">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-sky-900">Living Choices</span>
-                <span className="text-[10px] font-mono text-sky-700 bg-sky-50 px-1.5 py-0.2 rounded border border-sky-200">
+                <span className="text-[10px] font-mono text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded border border-sky-200">
                   ${housingModel.options.find(o=>o.isWinner)?.monthlySavings || 0}/mo
                 </span>
               </div>
@@ -255,7 +255,7 @@ export const PortfolioMatrixModal: React.FC<PortfolioMatrixModalProps> = ({
             <div className="p-3.5 rounded-xl border border-slate-200 bg-white space-y-1.5 shadow-2xs">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-purple-900">Course GPA</span>
-                <span className="text-[10px] font-mono text-purple-700 bg-purple-50 px-1.5 py-0.2 rounded border border-purple-200">
+                <span className="text-[10px] font-mono text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded border border-purple-200">
                   {Math.round(gpaModel.requiredFinalScore)}% on Final
                 </span>
               </div>
@@ -268,7 +268,7 @@ export const PortfolioMatrixModal: React.FC<PortfolioMatrixModalProps> = ({
             <div className="p-3.5 rounded-xl border border-slate-200 bg-white space-y-1.5 shadow-2xs">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-emerald-900">Event Budget</span>
-                <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200">
+                <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
                   ${budgetModel.netMargin.toLocaleString()}
                 </span>
               </div>

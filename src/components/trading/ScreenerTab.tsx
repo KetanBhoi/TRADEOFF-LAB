@@ -194,7 +194,7 @@ export const ScreenerTab: React.FC<ScreenerTabProps> = ({ onTradeSymbol }) => {
             >
               <span>{screen.name}</span>
               {screen.matchCount !== undefined && (
-                <span className="font-mono text-[10px] px-1 py-0.2 rounded bg-white/20 text-current">
+                <span className="font-mono text-[10px] px-1 py-0.5 rounded bg-white/20 text-current">
                   {screen.matchCount}
                 </span>
               )}

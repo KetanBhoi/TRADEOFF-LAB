@@ -272,7 +272,7 @@ export const MfOverlapTab: React.FC<MfOverlapTabProps> = ({ holdings, onNotify }
                   <div className="flex items-center flex-wrap gap-1 text-[10px] font-mono text-slate-600">
                     <span>Shared:</span>
                     {pair.commonStocks.slice(0, 5).map((st) => (
-                      <span key={st.symbol} className="px-1.5 py-0.2 bg-white border border-slate-200 rounded">
+                      <span key={st.symbol} className="px-1.5 py-0.5 bg-white border border-slate-200 rounded">
                         {st.symbol} ({st.minWeight}%)
                       </span>
                     ))}

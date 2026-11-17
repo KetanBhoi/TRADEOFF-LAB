@@ -97,7 +97,7 @@ export const PortfolioRebalanceTab: React.FC<PortfolioRebalanceTabProps> = ({
 
       {/* Mode Switch & Drift Status */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 rounded-xl border border-slate-200">
-        <div className="flex items-center gap-1 p-1 bg-slate-100 rounded-lg border border-slate-200">
+        <div className="flex flex-wrap items-center gap-1 p-1 bg-slate-100 rounded-lg border border-slate-200">
           <button
             type="button"
             onClick={() => setMode('CASH_INFLOW_ONLY')}

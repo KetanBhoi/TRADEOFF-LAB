@@ -11,6 +11,7 @@ import {
   GpaParams,
   BudgetParams,
   CustomParams,
+  TradingParams,
 } from '../types';
 
 export interface ArchetypePreset {
@@ -21,7 +22,7 @@ export interface ArchetypePreset {
   badgeColor: string;
   tagline: string;
   description: string;
-  params: RunningParams | HousingParams | GpaParams | BudgetParams | CustomParams;
+  params: RunningParams | HousingParams | GpaParams | BudgetParams | CustomParams | TradingParams;
   keyDifferentiator: string;
 }
 
@@ -275,6 +276,75 @@ export const PRESET_ARCHETYPES: ArchetypePreset[] = [
       finalExamWeight: 40,
       targetLetterGrade: 'B+',
     } as GpaParams,
+  },
+  {
+    id: 'trading_conservative_ipo',
+    scenarioId: 'trading',
+    name: 'Conservative Retail IPO Lot Discipline',
+    badge: 'Low Risk',
+    badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+    tagline: '1 retail lot focus with tight 5% stop-loss buffer',
+    description: 'Minimizes downside gap exposure on modestly subscribed mainboard listings while preserving liquidity.',
+    keyDifferentiator: 'Caps downside to 5% post-listing with ₹15,000 retail lot allocation.',
+    params: {
+      selectedIpoId: 'ntpcgreen',
+      ticker: 'NTPCGREEN',
+      companyName: 'NTPC Green Energy Ltd',
+      offerPrice: 108,
+      requestedShares: 138,
+      expectedDay1Pop: 11.2,
+      oversubscriptionRatio: 2.42,
+      lockupPeriodDays: 0,
+      postLockupDiscount: -2.0,
+      stopLossPercent: 5.0,
+      capitalCommitted: 14904,
+    } as TradingParams,
+  },
+  {
+    id: 'trading_momentum_listing',
+    scenarioId: 'trading',
+    name: 'High-Oversubscription Mainboard Momentum',
+    badge: 'Momentum',
+    badgeColor: 'bg-indigo-100 text-indigo-800 border-indigo-200',
+    tagline: 'HNI tranche simulation with 30x+ institutional demand',
+    description: 'Models pro-rata allotment compression when QIB/NII demand far exceeds supply.',
+    keyDifferentiator: 'High expected listing pop (+42%) offset by strict 8.2% pro-rata allotment fill rate.',
+    params: {
+      selectedIpoId: 'waaree',
+      ticker: 'WAAREE',
+      companyName: 'Waaree Energies Ltd',
+      offerPrice: 1503,
+      requestedShares: 180,
+      expectedDay1Pop: 42.5,
+      oversubscriptionRatio: 76.34,
+      lockupPeriodDays: 30,
+      postLockupDiscount: -6.5,
+      stopLossPercent: 8.0,
+      capitalCommitted: 270540,
+    } as TradingParams,
+  },
+  {
+    id: 'trading_swing_delivery',
+    scenarioId: 'trading',
+    name: 'Positional Anchor & CNC Swing Model',
+    badge: 'Balanced',
+    badgeColor: 'bg-amber-100 text-amber-800 border-amber-200',
+    tagline: 'Balanced capital commitment with 7.5% SL floor',
+    description: 'Standard positional sizing model balancing listing-day capture and 30-day anchor lock-in volatility.',
+    keyDifferentiator: 'Balanced 2:1 reward-to-risk floor with explicit STT & brokerage slip accounting.',
+    params: {
+      selectedIpoId: 'swiggy',
+      ticker: 'SWIGGY',
+      companyName: 'Swiggy Limited',
+      offerPrice: 390,
+      requestedShares: 380,
+      expectedDay1Pop: 15.4,
+      oversubscriptionRatio: 3.59,
+      lockupPeriodDays: 0,
+      postLockupDiscount: -4.5,
+      stopLossPercent: 7.5,
+      capitalCommitted: 148200,
+    } as TradingParams,
   },
 ];
 

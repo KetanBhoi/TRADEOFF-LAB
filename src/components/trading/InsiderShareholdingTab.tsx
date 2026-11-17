@@ -77,7 +77,7 @@ export const InsiderShareholdingTab: React.FC<InsiderShareholdingTabProps> = ({
           </p>
         </div>
 
-        <div className="flex items-center gap-1 p-1 bg-slate-100 rounded-lg border border-slate-200 shrink-0">
+        <div className="flex flex-wrap items-center gap-1 p-1 bg-slate-100 rounded-lg border border-slate-200">
           {[
             { id: 'ALL', label: 'All Tracked' },
             { id: 'HELD_ONLY', label: `Your Holdings (${heldSymbols.size})` },
