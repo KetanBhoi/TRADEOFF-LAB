@@ -589,7 +589,7 @@ export default function App() {
 
       {/* Unified Stacked Floating Toast Container (Prevents overlapping notifications) */}
       {(revertToast || exportToast || tradingToast) && (
-        <div className="fixed bottom-6 right-6 z-[70] flex flex-col items-end gap-2 max-w-md pointer-events-none">
+        <div className="fixed bottom-4 inset-x-4 sm:inset-x-auto sm:bottom-6 sm:right-6 z-[70] flex flex-col items-stretch sm:items-end gap-2 sm:max-w-md pointer-events-none">
           {revertToast && (
             <div className="pointer-events-auto bg-slate-900 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-xl border border-slate-700 flex items-center gap-2">
               <RotateCcw className="w-3.5 h-3.5 text-orange-400 shrink-0" />

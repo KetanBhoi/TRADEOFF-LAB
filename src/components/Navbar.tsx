@@ -141,7 +141,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-3">
         {/* Zone 1: Brand Wordmark */}
         <div className="flex items-center shrink-0">
           <a
@@ -150,7 +150,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               e.preventDefault();
               onSelectScenario('running');
             }}
-            className="flex items-center gap-2.5 group"
+            className="flex items-center gap-2 sm:gap-2.5 group"
           >
             <div className="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-xs shadow-xs group-hover:bg-slate-800 transition-colors shrink-0">
               <Sliders className="w-4 h-4 text-orange-400" />
@@ -160,11 +160,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="text-sm font-bold tracking-tight text-slate-900 block leading-tight whitespace-nowrap">
                   TradeOff Lab
                 </span>
-                <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-600 rounded border border-slate-200 shrink-0">
+                <span className="hidden sm:inline-block px-1.5 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-600 rounded border border-slate-200 shrink-0">
                   PRO
                 </span>
               </div>
-              <span className="text-[10px] font-medium text-slate-500 block leading-none font-mono whitespace-nowrap">
+              <span className="hidden sm:block text-[10px] font-medium text-slate-500 leading-none font-mono whitespace-nowrap">
                 Decision Engineering
               </span>
             </div>
@@ -193,12 +193,12 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Zone 3: Balanced Executive Toolbar (Zero horizontal overflow) */}
-        <div className="flex items-center gap-1.5 shrink-0">
+        <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
           {/* Quick Command Palette Button */}
           <button
             type="button"
             onClick={onOpenCommandPalette}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100/90 hover:bg-slate-200/80 border border-slate-200/90 rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100/90 hover:bg-slate-200/80 border border-slate-200/90 rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-2xs"
             title="Open Command Palette (Press ⌘K or /)"
           >
             <Search className="w-3.5 h-3.5 text-slate-500 shrink-0" />
@@ -214,7 +214,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               type="button"
               onClick={() => setIsToolsMenuOpen((o) => !o)}
               aria-expanded={isToolsMenuOpen}
-              className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold border rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-2xs ${
+              className={`inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1.5 text-xs font-semibold border rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-2xs ${
                 isToolsMenuOpen
                   ? 'bg-slate-900 text-white border-slate-900'
                   : 'text-slate-700 bg-white hover:bg-slate-50 border-slate-200'
@@ -258,7 +258,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={onOpenExport}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50/90 hover:bg-emerald-100 border border-emerald-200/90 rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50/90 hover:bg-emerald-100 border border-emerald-200/90 rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-2xs"
             title="Export Scenario Data as PDF or CSV (Press 'E')"
           >
             <Download className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
@@ -272,7 +272,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={onOpenHistory}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-2xs"
+            className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-2xs"
             title="View last 5 configurations & checkpoints (Press 'H')"
           >
             <History className="w-3.5 h-3.5 text-slate-500 shrink-0" />

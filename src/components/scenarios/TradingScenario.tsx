@@ -1248,7 +1248,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex flex-wrap items-center gap-2 shrink-0">
             <button
               type="button"
               onClick={() => setIsSpotlightOpen(true)}
@@ -1382,7 +1382,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
             ))}
           </div>
 
-          <div className="flex items-center justify-end gap-1.5 shrink-0">
+          <div className="flex items-center justify-between sm:justify-end gap-1.5 w-full xl:w-auto shrink-0">
             {/* Quick Prev / Next Module Stepper */}
             <button
               type="button"
@@ -1400,7 +1400,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                 setActiveTab(e.target.value as TradingTabId);
                 setActiveTabCategory('ALL');
               }}
-              className="px-2.5 py-1 text-[11px] font-semibold bg-white border border-slate-300 rounded-lg text-slate-800 focus:outline-indigo-600 max-w-[200px] sm:max-w-[230px]"
+              className="flex-1 sm:flex-initial min-w-0 px-2.5 py-1 text-[11px] font-semibold bg-white border border-slate-300 rounded-lg text-slate-800 focus:outline-indigo-600 max-w-full sm:max-w-[230px]"
             >
               <optgroup label="Portfolio & Taxes (9)">
                 <option value="portfolio_health">1. Portfolio Health</option>
