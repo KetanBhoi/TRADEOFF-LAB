@@ -597,13 +597,13 @@ export default function App() {
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         {/* Executive Decision Workflow & Status Bar */}
-        <div className="bg-white rounded-xl p-3 px-4 border border-slate-200/90 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
+        <div className="bg-white rounded-xl p-3 px-4 border border-slate-200/90 shadow-2xs flex flex-col xl:flex-row xl:items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="flex items-center gap-1.5 shrink-0">
               <span className="w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-100" />
-              <span className="font-bold text-slate-900 tracking-tight text-xs">Sim Engine Live</span>
+              <span className="font-bold text-slate-900 tracking-tight text-xs whitespace-nowrap">Sim Engine Live</span>
             </div>
-            <span className="text-slate-300">·</span>
+            <span className="text-slate-300 shrink-0">·</span>
             <span className="text-slate-600 truncate font-medium">
               {activeScenario === 'running' && 'Scenario 1: Half-Marathon Sub-2:00 Pacing Optimization'}
               {activeScenario === 'housing' && 'Scenario 2: Metro Living vs. Roommate Budget Allocation'}
@@ -614,15 +614,15 @@ export default function App() {
             </span>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex flex-wrap items-center gap-2 min-w-0">
             {/* 3-Step Methodology Pipeline */}
-            <div className="hidden sm:flex items-center gap-2 text-[11px] font-medium text-slate-600 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200">
-              <span className="text-emerald-700 flex items-center gap-1 font-semibold">
+            <div className="hidden sm:flex items-center gap-2 text-[11px] font-medium text-slate-600 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200 whitespace-nowrap shrink-0">
+              <span className="text-emerald-700 flex items-center gap-1 font-semibold whitespace-nowrap">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                 1. Calibrate
               </span>
               <span className="text-slate-300">→</span>
-              <span className="text-emerald-700 flex items-center gap-1 font-semibold">
+              <span className="text-emerald-700 flex items-center gap-1 font-semibold whitespace-nowrap">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                 2. Limits & Glow
               </span>
@@ -630,7 +630,7 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => setIsSanityCheckOpen(true)}
-                className="text-slate-900 hover:text-orange-600 font-bold flex items-center gap-1 transition-colors"
+                className="text-slate-900 hover:text-orange-600 font-bold flex items-center gap-1 transition-colors whitespace-nowrap"
                 title="Sanity-Check Math & Sensitivity (Press 'C')"
               >
                 <Calculator className="w-3.5 h-3.5 text-orange-600 shrink-0" />
@@ -639,54 +639,55 @@ export default function App() {
             </div>
 
             {/* Quick Intelligence Tool Trigger Buttons */}
-            <div className="flex items-center gap-1.5">
+            <div className="flex flex-wrap items-center gap-1.5">
               <button
                 type="button"
                 onClick={() => setIsGoalSeekOpen(true)}
-                className="hidden md:inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold text-indigo-700 hover:text-indigo-900 bg-indigo-50/80 hover:bg-indigo-100 border border-indigo-200/80 rounded-lg transition-colors shadow-2xs"
+                className="hidden md:inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold text-indigo-700 hover:text-indigo-900 bg-indigo-50/80 hover:bg-indigo-100 border border-indigo-200/80 rounded-lg transition-colors shadow-2xs whitespace-nowrap shrink-0"
                 title="Goal Seek: Auto-solve levers for target outcome (Press 'O')"
               >
-                <Target className="w-3.5 h-3.5 text-indigo-600" />
+                <Target className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
                 <span>Goal Seek</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setIsTornadoOpen(true)}
-                className="hidden md:inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold text-amber-900 hover:text-amber-950 bg-amber-50/80 hover:bg-amber-100 border border-amber-200/80 rounded-lg transition-colors shadow-2xs"
+                className="hidden md:inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold text-amber-900 hover:text-amber-950 bg-amber-50/80 hover:bg-amber-100 border border-amber-200/80 rounded-lg transition-colors shadow-2xs whitespace-nowrap shrink-0"
                 title="Tornado Sensitivity Diagram: Outcome swing ranking (Press 'Y')"
               >
-                <Zap className="w-3.5 h-3.5 text-amber-600" />
+                <Zap className="w-3.5 h-3.5 text-amber-600 shrink-0" />
                 <span>Tornado</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setIsMonteCarloOpen(true)}
-                className="hidden md:inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold text-orange-800 hover:text-orange-950 bg-orange-50/80 hover:bg-orange-100 border border-orange-200/80 rounded-lg transition-colors shadow-2xs"
+                className="hidden md:inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold text-orange-800 hover:text-orange-950 bg-orange-50/80 hover:bg-orange-100 border border-orange-200/80 rounded-lg transition-colors shadow-2xs whitespace-nowrap shrink-0"
                 title="Monte Carlo Stochastic Risk Simulation (Press 'M')"
               >
-                <Dices className="w-3.5 h-3.5 text-orange-600" />
+                <Dices className="w-3.5 h-3.5 text-orange-600 shrink-0" />
                 <span>Monte Carlo</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setIsExportOpen(true)}
-                className="hidden lg:inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold text-emerald-800 hover:text-emerald-950 bg-emerald-50/80 hover:bg-emerald-100 border border-emerald-200/80 rounded-lg transition-colors shadow-2xs"
+                className="hidden lg:inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold text-emerald-800 hover:text-emerald-950 bg-emerald-50/80 hover:bg-emerald-100 border border-emerald-200/80 rounded-lg transition-colors shadow-2xs whitespace-nowrap shrink-0"
                 title="Export Scenario Data as PDF or CSV (Press 'E')"
               >
-                <Download className="w-3.5 h-3.5 text-emerald-600" />
+                <Download className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                 <span>Export</span>
               </button>
 
               {/* Checklist Drawer Trigger */}
               <button
+                type="button"
                 onClick={() => setIsGuideOpen(true)}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors shadow-2xs"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors shadow-2xs whitespace-nowrap shrink-0"
                 title="Open full interactive decision checklist"
               >
-                <CheckCircle2 className="w-3.5 h-3.5 text-slate-500" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-slate-500 shrink-0" />
                 <span>Checklist</span>
                 <span className="font-mono text-[10px] text-slate-700 bg-slate-100 px-1.5 py-0.2 rounded border border-slate-200">
                   {completedTasksCount}/10
@@ -769,62 +770,62 @@ export default function App() {
 
       {/* Clean Editorial Footer with Global Keyboard Shortcuts Guide */}
       <footer className="border-t border-slate-200 bg-white py-5 mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div className="flex items-center gap-2">
-            <span className="font-semibold text-slate-800">TradeOff Lab</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 text-xs text-slate-500">
+          <div className="flex items-center flex-wrap gap-2 shrink-0">
+            <span className="font-semibold text-slate-800 whitespace-nowrap">TradeOff Lab</span>
             <span aria-hidden="true">·</span>
             <span>Interactive Data Visualization for Real-World Decisions</span>
           </div>
 
           {/* Keyboard Shortcuts Navigation Bar */}
-          <div className="flex items-center flex-wrap gap-2 text-slate-600 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200/80">
-            <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mr-1">Shortcuts:</span>
-            <span className="inline-flex items-center gap-1">
+          <div className="flex items-center flex-wrap gap-x-2 gap-y-1.5 text-slate-600 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200/80">
+            <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mr-1 whitespace-nowrap">Shortcuts:</span>
+            <span className="inline-flex items-center gap-1 whitespace-nowrap">
               <kbd className="px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white text-blue-700 border border-blue-200 rounded shadow-2xs">G</kbd>
               <span className="text-slate-600 font-medium">Real-Time Data</span>
             </span>
             <span className="text-slate-300">·</span>
-            <span className="inline-flex items-center gap-1">
+            <span className="inline-flex items-center gap-1 whitespace-nowrap">
               <kbd className="px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white text-orange-800 border border-orange-300 rounded shadow-2xs">P</kbd>
               <span className="text-slate-600 font-medium">Archetypes</span>
             </span>
             <span className="text-slate-300">·</span>
-            <span className="inline-flex items-center gap-1">
+            <span className="inline-flex items-center gap-1 whitespace-nowrap">
               <kbd className="px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white text-indigo-700 border border-indigo-200 rounded shadow-2xs">O</kbd>
               <span className="text-slate-600 font-medium">Goal Seek</span>
             </span>
             <span className="text-slate-300">·</span>
-            <span className="inline-flex items-center gap-1">
+            <span className="inline-flex items-center gap-1 whitespace-nowrap">
               <kbd className="px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white text-orange-800 border border-orange-300 rounded shadow-2xs">M</kbd>
               <span className="text-slate-600 font-medium">Monte Carlo</span>
             </span>
             <span className="text-slate-300">·</span>
-            <span className="inline-flex items-center gap-1">
+            <span className="inline-flex items-center gap-1 whitespace-nowrap">
               <kbd className="px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white text-slate-700 border border-slate-300 rounded shadow-2xs">R</kbd>
               <span className="text-slate-600 font-medium">Decision Brief</span>
             </span>
             <span className="text-slate-300">·</span>
-            <span className="inline-flex items-center gap-1">
+            <span className="inline-flex items-center gap-1 whitespace-nowrap">
               <kbd className="px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white text-orange-700 border border-orange-300 rounded shadow-2xs">T</kbd>
               <span className="text-slate-600 font-medium">Radar Matrix</span>
             </span>
             <span className="text-slate-300">·</span>
-            <span className="inline-flex items-center gap-1">
+            <span className="inline-flex items-center gap-1 whitespace-nowrap">
               <kbd className="px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white text-slate-700 border border-slate-300 rounded shadow-2xs">H</kbd>
               <span className="text-slate-600 font-medium">History</span>
             </span>
             <span className="text-slate-300">·</span>
-            <span className="inline-flex items-center gap-1">
+            <span className="inline-flex items-center gap-1 whitespace-nowrap">
               <kbd className="px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white text-indigo-700 border border-indigo-200 rounded shadow-2xs">S</kbd>
               <span className="text-slate-600 font-medium">Split View</span>
             </span>
             <span className="text-slate-300">·</span>
-            <span className="inline-flex items-center gap-1">
+            <span className="inline-flex items-center gap-1 whitespace-nowrap">
               <kbd className="px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white text-amber-800 border border-amber-300 rounded shadow-2xs">C</kbd>
               <span className="text-slate-600 font-medium">Sanity Check</span>
             </span>
             <span className="text-slate-300">·</span>
-            <span className="inline-flex items-center gap-1">
+            <span className="inline-flex items-center gap-1 whitespace-nowrap">
               <kbd className="px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white text-slate-600 border border-slate-300 rounded shadow-2xs">Esc</kbd>
               <span className="text-slate-500">Close</span>
             </span>

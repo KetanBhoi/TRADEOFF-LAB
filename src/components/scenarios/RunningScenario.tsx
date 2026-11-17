@@ -153,10 +153,10 @@ export const RunningScenario: React.FC<RunningScenarioProps> = ({
   return (
     <div className="space-y-6">
       {/* Scenario Brief Header Callout */}
-      <div className="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-700 rounded border border-slate-200">
+      <div className="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+        <div className="min-w-0">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-700 rounded border border-slate-200 whitespace-nowrap">
               Pacing Model
             </span>
             <span className="text-xs font-semibold text-slate-500">
@@ -164,7 +164,7 @@ export const RunningScenario: React.FC<RunningScenarioProps> = ({
             </span>
           </div>
           <h2 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 mt-1.5">
-            Running Pace Training & Adaptation Model
+            Running Pace Training &amp; Adaptation Model
           </h2>
           <p className="text-xs text-slate-600 mt-1 max-w-3xl leading-relaxed">
             Calibrate baseline long-run pace (10:45/mi) against your sub-2:00 goal (9:09/mi). Tweak timeline, runs per week, and speedwork to evaluate required weekly shave demand and biomechanical strain.
@@ -175,40 +175,44 @@ export const RunningScenario: React.FC<RunningScenarioProps> = ({
         <div className="flex items-center gap-1.5 shrink-0 flex-wrap">
           {onOpenPresets && (
             <button
+              type="button"
               onClick={onOpenPresets}
-              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg shadow-2xs transition-colors"
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg shadow-2xs transition-colors whitespace-nowrap shrink-0"
               title="Archetype Profiles & Saved Presets (P)"
             >
-              <FolderKanban className="w-3.5 h-3.5 text-orange-600" />
+              <FolderKanban className="w-3.5 h-3.5 text-orange-600 shrink-0" />
               <span>Archetypes</span>
             </button>
           )}
 
           {onOpenGoalSeek && (
             <button
+              type="button"
               onClick={onOpenGoalSeek}
-              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-indigo-700 bg-indigo-50/70 hover:bg-indigo-100 border border-indigo-200/80 rounded-lg shadow-2xs transition-colors"
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-indigo-700 bg-indigo-50/70 hover:bg-indigo-100 border border-indigo-200/80 rounded-lg shadow-2xs transition-colors whitespace-nowrap shrink-0"
               title="Reverse Goal Seek Optimizer (O)"
             >
-              <Target className="w-3.5 h-3.5 text-indigo-600" />
+              <Target className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
               <span>Goal Seek</span>
             </button>
           )}
 
           {onOpenMonteCarlo && (
             <button
+              type="button"
               onClick={onOpenMonteCarlo}
-              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-orange-800 bg-orange-50/70 hover:bg-orange-100 border border-orange-200/80 rounded-lg shadow-2xs transition-colors"
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-orange-800 bg-orange-50/70 hover:bg-orange-100 border border-orange-200/80 rounded-lg shadow-2xs transition-colors whitespace-nowrap shrink-0"
               title="Monte Carlo Risk Simulation (M)"
             >
-              <Dices className="w-3.5 h-3.5 text-orange-600" />
+              <Dices className="w-3.5 h-3.5 text-orange-600 shrink-0" />
               <span>Monte Carlo</span>
             </button>
           )}
 
           <button
+            type="button"
             onClick={() => setParams((p) => ({ ...p, weeksUntilRace: p.weeksUntilRace === 10 ? 13 : 10 }))}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg border transition-all ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-lg border transition-all whitespace-nowrap shrink-0 ${
               params.weeksUntilRace === 13
                 ? 'bg-orange-50 border-orange-300 text-orange-800'
                 : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'

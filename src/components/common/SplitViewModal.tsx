@@ -400,89 +400,93 @@ export const SplitViewModal: React.FC<SplitViewModalProps> = ({
               </div>
             ) : (
               <div className="border border-slate-200 rounded-xl overflow-hidden shadow-xs">
-                {/* Table Header */}
-                <div className="grid grid-cols-12 bg-slate-100 text-[11px] font-bold text-slate-600 p-3 border-b border-slate-200">
-                  <div className="col-span-4 sm:col-span-4">Parameter / Lever</div>
-                  <div className="col-span-3 sm:col-span-3 text-slate-500">Snapshot A (Baseline)</div>
-                  <div className="col-span-3 sm:col-span-3 text-indigo-700">Snapshot B (Comparison)</div>
-                  <div className="col-span-2 sm:col-span-2 text-right">Delta Shift</div>
-                </div>
+                <div className="overflow-x-auto">
+                  <div className="min-w-[560px]">
+                    {/* Table Header */}
+                    <div className="grid grid-cols-12 gap-2 bg-slate-100 text-[11px] font-bold text-slate-600 p-3 border-b border-slate-200 items-center">
+                      <div className="col-span-4">Parameter / Lever</div>
+                      <div className="col-span-3 text-slate-500">Snapshot A (Baseline)</div>
+                      <div className="col-span-3 text-indigo-700">Snapshot B (Comparison)</div>
+                      <div className="col-span-2 text-right">Delta Shift</div>
+                    </div>
 
-                {/* Table Rows */}
-                <div className="divide-y divide-slate-200">
-                  {parameterList.map((param) => {
-                    const diff = param.isDifferent;
+                    {/* Table Rows */}
+                    <div className="divide-y divide-slate-200">
+                      {parameterList.map((param) => {
+                        const diff = param.isDifferent;
 
-                    return (
-                      <div
-                        key={param.id}
-                        className={`grid grid-cols-12 p-3 text-xs items-center transition-colors ${
-                          diff
-                            ? 'bg-amber-50/40 hover:bg-amber-50/70'
-                            : 'bg-white hover:bg-slate-50'
-                        }`}
-                      >
-                        {/* Parameter Label */}
-                        <div className="col-span-4 sm:col-span-4 flex items-center gap-2">
-                          {diff ? (
-                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
-                          ) : (
-                            <span className="w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0" />
-                          )}
-                          <span className={`font-semibold ${diff ? 'text-slate-900' : 'text-slate-600'}`}>
-                            {param.label}
-                          </span>
-                        </div>
-
-                        {/* Snapshot A Value */}
-                        <div className="col-span-3 sm:col-span-3 font-mono text-slate-700">
-                          <span className="px-2 py-0.5 bg-slate-100 rounded border border-slate-200/80">
-                            {param.valADisplay}
-                          </span>
-                        </div>
-
-                        {/* Snapshot B Value */}
-                        <div className="col-span-3 sm:col-span-3 font-mono font-semibold text-slate-900">
-                          <span
-                            className={`px-2 py-0.5 rounded border ${
+                        return (
+                          <div
+                            key={param.id}
+                            className={`grid grid-cols-12 gap-2 p-3 text-xs items-center transition-colors ${
                               diff
-                                ? 'bg-amber-100/70 border-amber-300 text-amber-950 font-bold'
-                                : 'bg-slate-100 border-slate-200/80 text-slate-700'
+                                ? 'bg-amber-50/40 hover:bg-amber-50/70'
+                                : 'bg-white hover:bg-slate-50'
                             }`}
                           >
-                            {param.valBDisplay}
-                          </span>
-                        </div>
-
-                        {/* Delta Highlight */}
-                        <div className="col-span-2 sm:col-span-2 text-right font-mono font-bold">
-                          {diff ? (
-                            <span
-                              className={`inline-flex items-center gap-0.5 px-2 py-0.5 rounded text-[11px] ${
-                                param.numericDelta !== undefined && param.numericDelta > 0
-                                  ? 'bg-blue-50 text-blue-700 border border-blue-200'
-                                  : param.numericDelta !== undefined && param.numericDelta < 0
-                                  ? 'bg-orange-50 text-orange-700 border border-orange-200'
-                                  : 'bg-slate-100 text-slate-700 border border-slate-200'
-                              }`}
-                            >
-                              {param.numericDelta !== undefined ? (
-                                <>
-                                  {param.numericDelta > 0 ? '+' : ''}
-                                  {param.numericDelta}
-                                  {param.unit ? ` ${param.unit}` : ''}
-                                </>
+                            {/* Parameter Label */}
+                            <div className="col-span-4 flex items-center gap-2 min-w-0">
+                              {diff ? (
+                                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
                               ) : (
-                                'Modified'
+                                <span className="w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0" />
                               )}
-                            </span>
-                          ) : (
-                            <span className="text-slate-400 font-normal text-[11px]">—</span>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
+                              <span className={`font-semibold truncate ${diff ? 'text-slate-900' : 'text-slate-600'}`}>
+                                {param.label}
+                              </span>
+                            </div>
+
+                            {/* Snapshot A Value */}
+                            <div className="col-span-3 font-mono text-slate-700 tabular-nums whitespace-nowrap">
+                              <span className="px-2 py-0.5 bg-slate-100 rounded border border-slate-200/80">
+                                {param.valADisplay}
+                              </span>
+                            </div>
+
+                            {/* Snapshot B Value */}
+                            <div className="col-span-3 font-mono font-semibold text-slate-900 tabular-nums whitespace-nowrap">
+                              <span
+                                className={`px-2 py-0.5 rounded border ${
+                                  diff
+                                    ? 'bg-amber-100/70 border-amber-300 text-amber-950 font-bold'
+                                    : 'bg-slate-100 border-slate-200/80 text-slate-700'
+                                }`}
+                              >
+                                {param.valBDisplay}
+                              </span>
+                            </div>
+
+                            {/* Delta Highlight */}
+                            <div className="col-span-2 text-right font-mono font-bold tabular-nums whitespace-nowrap">
+                              {diff ? (
+                                <span
+                                  className={`inline-flex items-center gap-0.5 px-2 py-0.5 rounded text-[11px] ${
+                                    param.numericDelta !== undefined && param.numericDelta > 0
+                                      ? 'bg-blue-50 text-blue-700 border border-blue-200'
+                                      : param.numericDelta !== undefined && param.numericDelta < 0
+                                      ? 'bg-orange-50 text-orange-700 border border-orange-200'
+                                      : 'bg-slate-100 text-slate-700 border border-slate-200'
+                                  }`}
+                                >
+                                  {param.numericDelta !== undefined ? (
+                                    <>
+                                      {param.numericDelta > 0 ? '+' : ''}
+                                      {param.numericDelta}
+                                      {param.unit ? ` ${param.unit}` : ''}
+                                    </>
+                                  ) : (
+                                    'Modified'
+                                  )}
+                                </span>
+                              ) : (
+                                <span className="text-slate-400 font-normal text-[11px]">—</span>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
               </div>
             )}

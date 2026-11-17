@@ -157,11 +157,11 @@ export const LiveAlertsChecklistTab: React.FC<LiveAlertsChecklistTabProps> = ({
             </span>
           </div>
 
-          <form onSubmit={handleCreateRule} className="grid grid-cols-1 sm:grid-cols-12 gap-2.5 text-xs font-mono">
+          <form onSubmit={handleCreateRule} className="grid grid-cols-1 sm:grid-cols-12 gap-2.5 text-xs font-mono items-stretch">
             <select
               value={symbol}
               onChange={(e) => handleSymbolSelect(e.target.value)}
-              className="sm:col-span-3 px-2.5 py-2 bg-slate-50 border border-slate-200 rounded-lg font-bold text-slate-900"
+              className="sm:col-span-3 min-w-0 px-2.5 py-2 bg-slate-50 border border-slate-200 rounded-lg font-bold text-slate-900"
             >
               {quotes.map((q) => (
                 <option key={q.symbol} value={q.symbol}>
@@ -173,7 +173,7 @@ export const LiveAlertsChecklistTab: React.FC<LiveAlertsChecklistTabProps> = ({
             <select
               value={condition}
               onChange={(e) => setCondition(e.target.value as AlertConditionType)}
-              className="sm:col-span-2 px-2.5 py-2 bg-slate-50 border border-slate-200 rounded-lg font-bold text-slate-900"
+              className="sm:col-span-2 min-w-0 px-2.5 py-2 bg-slate-50 border border-slate-200 rounded-lg font-bold text-slate-900"
             >
               <option value="ABOVE">Crosses ≥</option>
               <option value="BELOW">Drops ≤</option>
@@ -184,7 +184,7 @@ export const LiveAlertsChecklistTab: React.FC<LiveAlertsChecklistTabProps> = ({
               step="0.05"
               value={targetPrice}
               onChange={(e) => setTargetPrice(parseFloat(e.target.value) || 0)}
-              className="sm:col-span-2 px-2.5 py-2 bg-slate-50 border border-slate-200 rounded-lg font-bold text-slate-900"
+              className="sm:col-span-2 min-w-0 px-2.5 py-2 bg-slate-50 border border-slate-200 rounded-lg font-bold text-slate-900 tabular-nums"
             />
 
             <input
@@ -192,14 +192,14 @@ export const LiveAlertsChecklistTab: React.FC<LiveAlertsChecklistTabProps> = ({
               value={note}
               onChange={(e) => setNote(e.target.value)}
               placeholder="Alert memo..."
-              className="sm:col-span-3 px-2.5 py-2 bg-slate-50 border border-slate-200 rounded-lg font-sans"
+              className="sm:col-span-3 min-w-0 px-2.5 py-2 bg-slate-50 border border-slate-200 rounded-lg font-sans"
             />
 
             <button
               type="submit"
-              className="sm:col-span-2 inline-flex items-center justify-center gap-1 px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition-colors"
+              className="sm:col-span-2 inline-flex items-center justify-center gap-1 px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition-colors whitespace-nowrap shrink-0"
             >
-              <Plus className="w-3.5 h-3.5" />
+              <Plus className="w-3.5 h-3.5 shrink-0" />
               <span>Arm</span>
             </button>
           </form>

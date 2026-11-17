@@ -55,7 +55,7 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
   onSelectTheme,
 }) => {
   return (
-    <div className="flex items-center gap-1.5 p-1 bg-white/90 rounded-xl border border-slate-200 shadow-2xs overflow-x-auto no-scrollbar">
+    <div className="w-full lg:w-auto max-w-full min-w-0 flex items-center gap-1.5 p-1 bg-white/90 rounded-xl border border-slate-200 shadow-2xs overflow-x-auto no-scrollbar">
       {THEME_OPTIONS.map((theme) => {
         const isActive = currentTheme === theme.id;
         return (
@@ -64,7 +64,7 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
             type="button"
             onClick={() => onSelectTheme(theme.id)}
             title={`${theme.name} (${theme.badge}) — ${theme.description}`}
-            className={`group relative flex items-center gap-2 px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 whitespace-nowrap cursor-pointer ${
+            className={`group relative flex items-center gap-2 px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 whitespace-nowrap shrink-0 cursor-pointer ${
               isActive
                 ? 'bg-slate-900 text-white shadow-sm ring-1 ring-slate-900 font-bold'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/90'

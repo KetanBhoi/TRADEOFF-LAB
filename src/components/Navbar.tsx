@@ -1,14 +1,11 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ScenarioId, ThemeId } from '../types';
 import { ThemeSelector } from './ThemeSelector';
 import {
-  ListChecks,
   RefreshCw,
   Download,
   History,
   Columns,
-  Globe,
-  Calculator,
   Sliders,
   Dices,
   Target,
@@ -18,6 +15,8 @@ import {
   Zap,
   Search,
   Palette,
+  ChevronDown,
+  Wrench,
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -48,12 +47,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSelectScenario,
   currentTheme,
   onSelectTheme,
-  onOpenGuide,
-  onOpenSanityCheck,
   onOpenExport,
   onOpenHistory,
   onOpenSplitView,
-  onOpenGoogleSearch,
   onOpenMonteCarlo,
   onOpenGoalSeek,
   onOpenTornado,
@@ -62,9 +58,29 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenPortfolio,
   onOpenCommandPalette,
   onResetActiveScenario,
-  completedTasksCount,
   historyCount,
 }) => {
+  const [isToolsMenuOpen, setIsToolsMenuOpen] = useState(false);
+  const toolsMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isToolsMenuOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (toolsMenuRef.current && !toolsMenuRef.current.contains(e.target as Node)) {
+        setIsToolsMenuOpen(false);
+      }
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsToolsMenuOpen(false);
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isToolsMenuOpen]);
+
   const scenarios: { id: ScenarioId; label: string; code: string }[] = [
     { id: 'running', label: 'Running Pace', code: 'PACE' },
     { id: 'housing', label: 'Living Choices', code: 'RENT' },
@@ -74,11 +90,60 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'custom', label: 'Custom Sandbox', code: 'MATH' },
   ];
 
+  const analysisTools = [
+    {
+      label: 'Archetypes & Presets',
+      shortcut: 'P',
+      icon: <FolderKanban className="w-3.5 h-3.5 text-orange-600 shrink-0" />,
+      onClick: onOpenPresets,
+    },
+    {
+      label: 'Reverse Goal Seek',
+      shortcut: 'O',
+      icon: <Target className="w-3.5 h-3.5 text-indigo-600 shrink-0" />,
+      onClick: onOpenGoalSeek,
+    },
+    {
+      label: 'Tornado Sensitivity',
+      shortcut: 'Y',
+      icon: <Zap className="w-3.5 h-3.5 text-amber-600 shrink-0" />,
+      onClick: onOpenTornado,
+    },
+    {
+      label: 'Monte Carlo (1k Runs)',
+      shortcut: 'M',
+      icon: <Dices className="w-3.5 h-3.5 text-orange-600 shrink-0" />,
+      onClick: onOpenMonteCarlo,
+    },
+    {
+      label: 'Executive Decision Brief',
+      shortcut: 'R',
+      icon: <FileText className="w-3.5 h-3.5 text-slate-600 shrink-0" />,
+      onClick: onOpenDecisionReport,
+    },
+    ...(onOpenPortfolio
+      ? [
+          {
+            label: 'Portfolio Radar Matrix',
+            shortcut: 'T',
+            icon: <PieChart className="w-3.5 h-3.5 text-orange-600 shrink-0" />,
+            onClick: onOpenPortfolio,
+          },
+        ]
+      : []),
+    {
+      label: 'Split-View Comparison',
+      shortcut: 'S',
+      icon: <Columns className="w-3.5 h-3.5 text-indigo-600 shrink-0" />,
+      onClick: onOpenSplitView,
+    },
+  ];
+
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
         {/* Zone 1: Brand Wordmark */}
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center shrink-0">
           <a
             href="#"
             onClick={(e) => {
@@ -87,19 +152,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             }}
             className="flex items-center gap-2.5 group"
           >
-            <div className="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-xs shadow-xs group-hover:bg-slate-800 transition-colors">
+            <div className="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-xs shadow-xs group-hover:bg-slate-800 transition-colors shrink-0">
               <Sliders className="w-4 h-4 text-orange-400" />
             </div>
-            <div>
+            <div className="min-w-0">
               <div className="flex items-center gap-1.5">
-                <span className="text-sm font-bold tracking-tight text-slate-900 block leading-tight">
+                <span className="text-sm font-bold tracking-tight text-slate-900 block leading-tight whitespace-nowrap">
                   TradeOff Lab
                 </span>
-                <span className="px-1.5 py-0.2 text-[9px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-600 rounded border border-slate-200">
+                <span className="px-1.5 py-0.2 text-[9px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-600 rounded border border-slate-200 shrink-0">
                   PRO
                 </span>
               </div>
-              <span className="text-[10px] font-medium text-slate-500 block leading-none font-mono">
+              <span className="text-[10px] font-medium text-slate-500 block leading-none font-mono whitespace-nowrap">
                 Decision Engineering
               </span>
             </div>
@@ -107,14 +172,15 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Zone 2: Segmented Scenario Navigation Controls */}
-        <nav className="hidden lg:flex items-center gap-1 p-1 bg-slate-100/90 rounded-lg border border-slate-200/80">
+        <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 p-1 bg-slate-100/90 rounded-lg border border-slate-200/80 min-w-0">
           {scenarios.map((sc) => {
             const isActive = activeScenario === sc.id;
             return (
               <button
                 key={sc.id}
+                type="button"
                 onClick={() => onSelectScenario(sc.id)}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-all whitespace-nowrap flex items-center gap-1.5 ${
+                className={`px-2 xl:px-2.5 py-1.5 text-[11px] xl:text-xs font-semibold rounded-md transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
                   isActive
                     ? 'bg-white text-slate-950 shadow-2xs font-bold border border-slate-200/90'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
@@ -126,149 +192,106 @@ export const Navbar: React.FC<NavbarProps> = ({
           })}
         </nav>
 
-        {/* Zone 3: Consolidated Executive Toolbar */}
+        {/* Zone 3: Balanced Executive Toolbar (Zero horizontal overflow) */}
         <div className="flex items-center gap-1.5 shrink-0">
           {/* Quick Command Palette Button */}
           <button
+            type="button"
             onClick={onOpenCommandPalette}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100/90 hover:bg-slate-200/80 border border-slate-200/90 rounded-lg transition-colors whitespace-nowrap shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100/90 hover:bg-slate-200/80 border border-slate-200/90 rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-2xs"
             title="Open Command Palette (Press ⌘K or /)"
           >
             <Search className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-            <span className="hidden lg:inline text-slate-600">Commands</span>
+            <span className="hidden xl:inline text-slate-600">Commands</span>
             <kbd className="hidden sm:inline-flex items-center justify-center px-1.5 py-0.2 text-[9px] font-mono font-bold bg-white text-slate-700 border border-slate-200 rounded">
               ⌘K
             </kbd>
           </button>
 
-          {/* Archetype Presets */}
-          <button
-            onClick={onOpenPresets}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors whitespace-nowrap shadow-2xs"
-            title="Load realistic life & industry archetypes or save custom presets (Press 'P')"
-          >
-            <FolderKanban className="w-3.5 h-3.5 text-orange-600 shrink-0" />
-            <span className="hidden xl:inline">Archetypes</span>
-            <kbd className="hidden md:inline-flex items-center justify-center px-1.5 py-0.2 text-[9px] font-mono font-bold bg-slate-100 text-slate-600 border border-slate-200 rounded">
-              P
-            </kbd>
-          </button>
-
-          {/* Reverse Goal Seek Optimizer */}
-          <button
-            onClick={onOpenGoalSeek}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-indigo-700 bg-indigo-50/70 hover:bg-indigo-100/80 border border-indigo-200/80 rounded-lg transition-colors whitespace-nowrap shadow-2xs"
-            title="Reverse Goal Seek: Automatically optimize levers to hit target outcome (Press 'O')"
-          >
-            <Target className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
-            <span className="hidden xl:inline">Goal Seek</span>
-            <kbd className="hidden md:inline-flex items-center justify-center px-1.5 py-0.2 text-[9px] font-mono font-bold bg-white text-indigo-700 border border-indigo-200 rounded">
-              O
-            </kbd>
-          </button>
-
-          {/* Tornado Sensitivity Diagram */}
-          <button
-            onClick={onOpenTornado}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-amber-900 bg-amber-50/80 hover:bg-amber-100 border border-amber-200/80 rounded-lg transition-colors whitespace-nowrap shadow-2xs"
-            title="Tornado Sensitivity Diagram: Outcome swing ranking & dominant lever (Press 'Y')"
-          >
-            <Zap className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-            <span className="hidden xl:inline">Tornado</span>
-            <kbd className="hidden md:inline-flex items-center justify-center px-1.5 py-0.2 text-[9px] font-mono font-bold bg-white text-amber-900 border border-amber-200 rounded">
-              Y
-            </kbd>
-          </button>
-
-          {/* Monte Carlo Stochastic Simulation */}
-          <button
-            onClick={onOpenMonteCarlo}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-orange-800 bg-orange-50/80 hover:bg-orange-100 border border-orange-200/80 rounded-lg transition-colors whitespace-nowrap shadow-2xs"
-            title="Monte Carlo: 1,000 trial stochastic simulation & risk histogram (Press 'M')"
-          >
-            <Dices className="w-3.5 h-3.5 text-orange-600 shrink-0" />
-            <span className="hidden xl:inline">Monte Carlo</span>
-            <kbd className="hidden md:inline-flex items-center justify-center px-1.5 py-0.2 text-[9px] font-mono font-bold bg-white text-orange-800 border border-orange-200 rounded">
-              M
-            </kbd>
-          </button>
-
-          {/* Decision Brief Report */}
-          <button
-            onClick={onOpenDecisionReport}
-            className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors whitespace-nowrap shadow-2xs"
-            title="Executive Decision Intelligence Brief & CSV Export (Press 'R')"
-          >
-            <FileText className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-            <span className="hidden xl:inline">Decision Brief</span>
-            <kbd className="hidden md:inline-flex items-center justify-center px-1.5 py-0.2 text-[9px] font-mono font-bold bg-slate-100 text-slate-600 border border-slate-200 rounded">
-              R
-            </kbd>
-          </button>
-
-          {/* Portfolio TradeOff Matrix */}
-          {onOpenPortfolio && (
+          {/* Consolidated Analysis & Simulation Tools Menu */}
+          <div className="relative shrink-0" ref={toolsMenuRef}>
             <button
-              onClick={onOpenPortfolio}
-              className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors whitespace-nowrap shadow-2xs"
-              title="Portfolio Tradeoff Radar Matrix (Press 'T')"
+              type="button"
+              onClick={() => setIsToolsMenuOpen((o) => !o)}
+              aria-expanded={isToolsMenuOpen}
+              className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold border rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-2xs ${
+                isToolsMenuOpen
+                  ? 'bg-slate-900 text-white border-slate-900'
+                  : 'text-slate-700 bg-white hover:bg-slate-50 border-slate-200'
+              }`}
+              title="Open Modeling, Sensitivity & Simulation Tools"
             >
-              <PieChart className="w-3.5 h-3.5 text-orange-600 shrink-0" />
-              <span className="hidden xl:inline">Radar Matrix</span>
-              <kbd className="hidden md:inline-flex items-center justify-center px-1.5 py-0.2 text-[9px] font-mono font-bold bg-slate-100 text-slate-600 border border-slate-200 rounded">
-                T
-              </kbd>
+              <Wrench className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
+              <span className="hidden sm:inline">Lab Tools</span>
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isToolsMenuOpen ? 'rotate-180' : ''}`} />
             </button>
-          )}
+
+            {isToolsMenuOpen && (
+              <div className="absolute right-0 mt-2 w-64 rounded-xl bg-white border border-slate-200 shadow-xl py-1.5 z-50">
+                <div className="px-3 py-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100">
+                  Decision Science Toolkit
+                </div>
+                {analysisTools.map((tool) => (
+                  <button
+                    key={tool.label}
+                    type="button"
+                    onClick={() => {
+                      setIsToolsMenuOpen(false);
+                      tool.onClick();
+                    }}
+                    className="w-full px-3 py-2 text-left text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-slate-950 flex items-center justify-between gap-2 transition-colors"
+                  >
+                    <span className="flex items-center gap-2 min-w-0 truncate">
+                      {tool.icon}
+                      <span className="truncate">{tool.label}</span>
+                    </span>
+                    <kbd className="px-1.5 py-0.5 text-[10px] font-mono font-bold bg-slate-100 text-slate-600 border border-slate-200 rounded shrink-0">
+                      {tool.shortcut}
+                    </kbd>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
 
           {/* Dedicated Export Button (PDF / CSV / JSON) */}
           <button
+            type="button"
             onClick={onOpenExport}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50/90 hover:bg-emerald-100 border border-emerald-200/90 rounded-lg transition-colors whitespace-nowrap shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50/90 hover:bg-emerald-100 border border-emerald-200/90 rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-2xs"
             title="Export Scenario Data as PDF or CSV (Press 'E')"
           >
             <Download className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-            <span className="font-bold">Export</span>
-            <kbd className="hidden md:inline-flex items-center justify-center px-1.5 py-0.2 text-[9px] font-mono font-bold bg-white text-emerald-800 border border-emerald-200 rounded">
+            <span className="hidden sm:inline font-bold">Export</span>
+            <kbd className="hidden xl:inline-flex items-center justify-center px-1.5 py-0.2 text-[9px] font-mono font-bold bg-white text-emerald-800 border border-emerald-200 rounded">
               E
-            </kbd>
-          </button>
-
-          {/* Split View */}
-          <button
-            onClick={onOpenSplitView}
-            className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors whitespace-nowrap shadow-2xs"
-            title="Split-View: Compare two snapshots side-by-side (Press 'S')"
-          >
-            <Columns className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
-            <span className="hidden xl:inline">Split View</span>
-            <kbd className="hidden md:inline-flex items-center justify-center px-1.5 py-0.2 text-[9px] font-mono font-bold bg-slate-100 text-slate-600 border border-slate-200 rounded">
-              S
             </kbd>
           </button>
 
           {/* History */}
           <button
+            type="button"
             onClick={onOpenHistory}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors whitespace-nowrap shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-2xs"
             title="View last 5 configurations & checkpoints (Press 'H')"
           >
             <History className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-            <span className="hidden sm:inline">History</span>
+            <span className="hidden xl:inline">History</span>
             {historyCount > 0 && (
               <span className="font-mono text-[10px] text-slate-700 bg-slate-100 px-1 py-0.2 rounded border border-slate-200">
                 {historyCount}
               </span>
             )}
-            <kbd className="hidden md:inline-flex items-center justify-center px-1.5 py-0.2 text-[9px] font-mono font-bold bg-slate-100 text-slate-600 border border-slate-200 rounded">
+            <kbd className="hidden xl:inline-flex items-center justify-center px-1.5 py-0.2 text-[9px] font-mono font-bold bg-slate-100 text-slate-600 border border-slate-200 rounded">
               H
             </kbd>
           </button>
 
           {/* Reset Levers */}
           <button
+            type="button"
             onClick={onResetActiveScenario}
-            className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+            className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors shrink-0"
             title="Reset active scenario sliders to baseline"
           >
             <RefreshCw className="w-3.5 h-3.5" />
@@ -278,14 +301,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Sub-Header Bar: Dedicated Theme & Workspace Selector Under the First Header */}
       <div className="bg-slate-50/95 backdrop-blur-md border-t border-slate-200/90 px-4 sm:px-6 lg:px-8 py-2">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-2.5">
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-            <span className="p-1 rounded-md bg-white border border-slate-200 text-indigo-600 shadow-2xs">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-2.5">
+          <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 min-w-0">
+            <span className="p-1 rounded-md bg-white border border-slate-200 text-indigo-600 shadow-2xs shrink-0">
               <Palette className="w-3.5 h-3.5" />
             </span>
-            <span>Workspace Theme Palette:</span>
-            <span className="text-[11px] font-mono text-slate-500 font-normal hidden sm:inline">
-              Select cognitive visual palette for graphs, accents & analytics
+            <span className="whitespace-nowrap">Workspace Theme Palette:</span>
+            <span className="text-[11px] font-mono text-slate-500 font-normal hidden sm:inline truncate">
+              Select cognitive visual palette for graphs, accents &amp; analytics
             </span>
           </div>
 
@@ -300,8 +323,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           return (
             <button
               key={sc.id}
+              type="button"
               onClick={() => onSelectScenario(sc.id)}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-md whitespace-nowrap transition-colors ${
+              className={`px-3 py-1.5 text-xs font-semibold rounded-md whitespace-nowrap shrink-0 transition-colors ${
                 isActive
                   ? 'bg-slate-900 text-white shadow-2xs'
                   : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'

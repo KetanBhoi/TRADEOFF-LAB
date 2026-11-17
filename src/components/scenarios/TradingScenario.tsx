@@ -1066,22 +1066,22 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
   return (
     <div className="space-y-6">
       {/* Scenario Brief Header Callout */}
-      <div className="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
+      <div className="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4">
+        <div className="min-w-0">
           <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-            <span className="px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-900 text-white rounded">
+            <span className="px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-900 text-white rounded whitespace-nowrap">
               DECISION LAB #6
             </span>
-            <span className="px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 rounded">
-              LIVE TRADING & IPO ALLOCATION DESK
+            <span className="px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 rounded whitespace-nowrap">
+              LIVE TRADING &amp; IPO ALLOCATION DESK
             </span>
-            <div className="flex items-center gap-1.5 text-xs text-slate-500 font-mono ml-1">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <div className="flex items-center gap-1.5 text-xs text-slate-500 font-mono ml-1 whitespace-nowrap">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
               <span>Broker: {brokerAccount.broker.toUpperCase()} ({brokerAccount.isPaperTrading ? 'Paper Sim' : 'Live'})</span>
             </div>
           </div>
           <h2 className="text-lg sm:text-xl font-bold text-slate-950 tracking-tight">
-            IPO Allocation & Algorithmic Trading Centre
+            IPO Allocation &amp; Algorithmic Trading Centre
           </h2>
           <p className="text-xs text-slate-500 max-w-2xl mt-0.5 leading-relaxed">
             Real-time Indian market IPO book-building tracking, Grey Market Premiums (GMP), broker OAuth integration,
@@ -1094,50 +1094,50 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
           <button
             type="button"
             onClick={() => setIsEducationModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-purple-700 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition-colors shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-purple-700 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition-colors shadow-2xs whitespace-nowrap shrink-0"
             title="Open Crisis Simulator, Glossary & SEBI Risk Certification Exam"
           >
-            <GraduationCap className="w-3.5 h-3.5 text-purple-600" />
+            <GraduationCap className="w-3.5 h-3.5 text-purple-600 shrink-0" />
             <span>{isRiskCertified ? '✓ Risk Certified' : 'Education & Quiz'}</span>
           </button>
 
           <button
             type="button"
             onClick={() => setIsGuideModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors shadow-2xs whitespace-nowrap shrink-0"
             title="Open comprehensive IPO & Live Trading Guide"
           >
-            <BookOpen className="w-3.5 h-3.5 text-orange-600" />
+            <BookOpen className="w-3.5 h-3.5 text-orange-600 shrink-0" />
             <span>Trading Guide</span>
           </button>
 
           <button
             type="button"
             onClick={() => setIsAllotmentModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-indigo-700 bg-indigo-50/80 hover:bg-indigo-100 border border-indigo-200 rounded-lg transition-colors shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-indigo-700 bg-indigo-50/80 hover:bg-indigo-100 border border-indigo-200 rounded-lg transition-colors shadow-2xs whitespace-nowrap shrink-0"
             title="Check IPO allotment status by PAN or Application number"
           >
-            <Search className="w-3.5 h-3.5 text-indigo-600" />
+            <Search className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
             <span>Check Allotment</span>
           </button>
 
           <button
             type="button"
             onClick={() => setIsExecutiveBriefOpen(true)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg transition-colors shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg transition-colors shadow-2xs whitespace-nowrap shrink-0"
             title="View & export downloadable Portfolio, Risk & Tax Executive Brief"
           >
-            <FileText className="w-3.5 h-3.5 text-indigo-600" />
+            <FileText className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
             <span>Executive Brief</span>
           </button>
 
           <button
             type="button"
             onClick={() => setIsBrokerModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg transition-colors shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg transition-colors shadow-2xs whitespace-nowrap shrink-0"
             title="Connect Zerodha Kite, Upstox, or Paper Trading API"
           >
-            <Lock className="w-3.5 h-3.5 text-slate-600" />
+            <Lock className="w-3.5 h-3.5 text-slate-600 shrink-0" />
             <span>Connect Broker API</span>
           </button>
 
@@ -1146,19 +1146,19 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
             <button
               type="button"
               onClick={handleResetKillSwitch}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-emerald-800 bg-emerald-100 border border-emerald-300 rounded-lg shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-emerald-800 bg-emerald-100 border border-emerald-300 rounded-lg shadow-2xs whitespace-nowrap shrink-0"
             >
-              <RotateCcw className="w-3.5 h-3.5 text-emerald-700" />
+              <RotateCcw className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
               <span>Resume Trading</span>
             </button>
           ) : (
             <button
               type="button"
               onClick={handleTriggerKillSwitch}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-lg shadow-2xs transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-lg shadow-2xs transition-colors whitespace-nowrap shrink-0"
               title="Immediately square off all positions and cancel orders"
             >
-              <Zap className="w-3.5 h-3.5" />
+              <Zap className="w-3.5 h-3.5 shrink-0" />
               <span>KILL SWITCH</span>
             </button>
           )}
@@ -1167,8 +1167,8 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
 
       {/* Kill Switch Alert Banner if Active */}
       {riskSettings.isKillSwitchEngaged && (
-        <div className="p-4 rounded-xl bg-rose-50 border border-rose-300 flex items-center justify-between text-xs text-rose-950 animate-in fade-in">
-          <div className="flex items-center gap-2.5">
+        <div className="p-4 rounded-xl bg-rose-50 border border-rose-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-rose-950 animate-in fade-in">
+          <div className="flex items-center gap-2.5 min-w-0">
             <ShieldAlert className="w-5 h-5 text-rose-600 shrink-0" />
             <div>
               <strong className="block font-bold">EMERGENCY KILL SWITCH ENGAGED: ALL POSITIONS SQUARED OFF</strong>
@@ -1180,7 +1180,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
           <button
             type="button"
             onClick={handleResetKillSwitch}
-            className="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-lg transition-colors"
+            className="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-lg transition-colors whitespace-nowrap shrink-0"
           >
             Reset Circuit Breaker
           </button>
@@ -1307,7 +1307,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
       {/* Trader Workspace Mode Presets */}
       <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2 rounded-xl bg-white border border-slate-200 text-xs">
         <div className="flex items-center flex-wrap gap-1.5">
-          <span className="text-[11px] font-semibold text-slate-500 mr-1">Workspace Focus:</span>
+          <span className="text-[11px] font-semibold text-slate-500 mr-1 whitespace-nowrap shrink-0">Workspace Focus:</span>
           {[
             { id: 'ALL', label: 'All 34 Tools' },
             { id: 'INVESTOR', label: 'Long-Term Investor' },
@@ -1328,15 +1328,15 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
             </button>
           ))}
         </div>
-        <span className="text-[11px] text-slate-500 font-mono">
+        <span className="text-[11px] text-slate-500 font-mono whitespace-nowrap shrink-0">
           Tip: Press J (Search), ? (Shortcuts), Alt+1..6 (Pins)
         </span>
       </div>
 
       {/* Category Filter, Pinned Quick Access & Module Bar */}
       <div className="space-y-2 border-b border-slate-200 pb-2.5">
-        <div className="flex items-center justify-between gap-2 overflow-x-auto no-scrollbar">
-          <div className="flex items-center gap-1.5 shrink-0">
+        <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-2.5">
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar min-w-0">
             {[
               { id: 'ALL', label: 'All Modules (34)' },
               { id: 'PORTFOLIO_TAX', label: 'Portfolio & Taxes (9)' },
@@ -1360,12 +1360,12 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
             ))}
           </div>
 
-          <div className="flex items-center gap-1.5 shrink-0">
+          <div className="flex items-center justify-end gap-1.5 shrink-0">
             {/* Quick Prev / Next Module Stepper */}
             <button
               type="button"
               onClick={() => setActiveTab(prevModuleMeta.id as TradingTabId)}
-              className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 hover:text-slate-900 transition-colors"
+              className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 hover:text-slate-900 transition-colors shrink-0"
               title={`Previous: ${prevModuleMeta.label}`}
             >
               <ChevronLeft className="w-3.5 h-3.5" />
@@ -1378,7 +1378,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                 setActiveTab(e.target.value as TradingTabId);
                 setActiveTabCategory('ALL');
               }}
-              className="px-2.5 py-1 text-[11px] font-semibold bg-white border border-slate-300 rounded-lg text-slate-800 focus:outline-indigo-600"
+              className="px-2.5 py-1 text-[11px] font-semibold bg-white border border-slate-300 rounded-lg text-slate-800 focus:outline-indigo-600 max-w-[200px] sm:max-w-[230px]"
             >
               <optgroup label="Portfolio & Taxes (9)">
                 <option value="portfolio_health">1. Portfolio Health</option>
@@ -1429,7 +1429,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
             <button
               type="button"
               onClick={() => setActiveTab(nextModuleMeta.id as TradingTabId)}
-              className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 hover:text-slate-900 transition-colors"
+              className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 hover:text-slate-900 transition-colors shrink-0"
               title={`Next: ${nextModuleMeta.label}`}
             >
               <ChevronRight className="w-3.5 h-3.5" />
@@ -1438,14 +1438,14 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
             <button
               type="button"
               onClick={() => togglePinTab(activeTab)}
-              className={`inline-flex items-center gap-1 px-2 py-1 text-[11px] font-semibold rounded-lg border transition-colors ${
+              className={`inline-flex items-center gap-1 px-2 py-1 text-[11px] font-semibold rounded-lg border transition-colors whitespace-nowrap shrink-0 ${
                 pinnedTabIds.includes(activeTab)
                   ? 'bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100'
                   : 'bg-white text-slate-500 border-slate-200 hover:text-amber-700 hover:border-amber-200'
               }`}
               title={pinnedTabIds.includes(activeTab) ? 'Unpin active module' : 'Pin active module to favorites'}
             >
-              <Star className={`w-3.5 h-3.5 ${pinnedTabIds.includes(activeTab) ? 'fill-amber-400 text-amber-500' : ''}`} />
+              <Star className={`w-3.5 h-3.5 shrink-0 ${pinnedTabIds.includes(activeTab) ? 'fill-amber-400 text-amber-500' : ''}`} />
               <span className="hidden sm:inline">{pinnedTabIds.includes(activeTab) ? 'Pinned' : 'Pin'}</span>
             </button>
           </div>
@@ -1873,10 +1873,10 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                   </div>
 
                   {/* Quantity & Price */}
-                  <div className="grid grid-cols-2 gap-3 text-xs font-mono">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono items-start">
                     <div className="space-y-1.5">
-                      <div className="flex items-center justify-between">
-                        <label className="text-[11px] font-semibold text-slate-600">Quantity (Shares)</label>
+                      <div className="min-h-[22px] flex items-center justify-between gap-2">
+                        <label className="text-[11px] font-semibold text-slate-600 whitespace-nowrap">Quantity (Shares)</label>
                         {(() => {
                           const effEntry = orderType === 'MARKET' ? selectedQuote.lastPrice : orderPrice;
                           const riskPerUnit = Math.max(0.5, Math.abs(effEntry - orderStopLoss));
@@ -1889,7 +1889,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                                 setOrderQuantity(safeQty);
                                 showToast(`Auto-sized to ${safeQty} shares within ${riskSettings.maxRiskPerTradePercent}% risk cap.`, 'info');
                               }}
-                              className="text-[10px] font-bold text-indigo-700 hover:text-indigo-900 bg-indigo-50 hover:bg-indigo-100 px-1.5 py-0.5 rounded border border-indigo-200 transition-colors"
+                              className="text-[10px] font-bold text-indigo-700 hover:text-indigo-900 bg-indigo-50 hover:bg-indigo-100 px-1.5 py-0.5 rounded border border-indigo-200 transition-colors whitespace-nowrap shrink-0"
                               title={`Compute qty keeping max loss <= ₹${Math.round(maxRiskBudget).toLocaleString('en-IN')}`}
                             >
                               Auto Safe ({safeQty})
@@ -1903,7 +1903,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                         max="10000"
                         value={orderQuantity}
                         onChange={(e) => setOrderQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg font-bold text-slate-900"
+                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg font-bold text-slate-900 tabular-nums"
                       />
                       <div className="flex items-center gap-1">
                         {[10, 25, 50, 100].map((qtyPreset) => (
@@ -1924,16 +1924,19 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-[11px] font-semibold text-slate-600 block">Price (₹)</label>
+                      <div className="min-h-[22px] flex items-center justify-between gap-2">
+                        <label className="text-[11px] font-semibold text-slate-600 whitespace-nowrap">Price (₹)</label>
+                        <span className="text-[10px] font-mono text-slate-400 uppercase">{orderType}</span>
+                      </div>
                       <input
                         type="number"
                         step="0.05"
                         disabled={orderType === 'MARKET'}
                         value={orderType === 'MARKET' ? selectedQuote.lastPrice : orderPrice}
                         onChange={(e) => setOrderPrice(parseFloat(e.target.value) || 0)}
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg font-bold text-slate-900 disabled:opacity-60"
+                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg font-bold text-slate-900 disabled:opacity-60 tabular-nums"
                       />
-                      <div className="text-[10px] text-slate-500">
+                      <div className="text-[10px] text-slate-500 leading-tight">
                         {orderType === 'MARKET'
                           ? 'Executes at best live quote'
                           : 'Click any L2 depth price on right to fill'}
@@ -1942,10 +1945,10 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                   </div>
 
                   {/* Stop Loss & Target Safeguards */}
-                  <div className="grid grid-cols-2 gap-3 text-xs font-mono">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono items-start">
                     <div className="space-y-1.5">
-                      <label className="text-[11px] font-semibold text-slate-600 flex items-center gap-1">
-                        <ShieldAlert className="w-3 h-3 text-amber-500" />
+                      <label className="min-h-[20px] text-[11px] font-semibold text-slate-600 flex items-center gap-1">
+                        <ShieldAlert className="w-3 h-3 text-amber-500 shrink-0" />
                         <span>Stop-Loss (₹)</span>
                       </label>
                       <input
@@ -1953,7 +1956,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                         step="0.05"
                         value={orderStopLoss}
                         onChange={(e) => setOrderStopLoss(parseFloat(e.target.value) || 0)}
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg font-bold text-slate-900"
+                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg font-bold text-slate-900 tabular-nums"
                       />
                       <div className="flex items-center gap-1">
                         {[1, 2, 5].map((pct) => {
@@ -1974,8 +1977,8 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-[11px] font-semibold text-slate-600 flex items-center gap-1">
-                        <CheckCircle2 className="w-3 h-3 text-emerald-500" />
+                      <label className="min-h-[20px] text-[11px] font-semibold text-slate-600 flex items-center gap-1">
+                        <CheckCircle2 className="w-3 h-3 text-emerald-500 shrink-0" />
                         <span>Target Profit (₹)</span>
                       </label>
                       <input
@@ -1983,7 +1986,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                         step="0.05"
                         value={orderTarget}
                         onChange={(e) => setOrderTarget(parseFloat(e.target.value) || 0)}
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg font-bold text-slate-900"
+                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg font-bold text-slate-900 tabular-nums"
                       />
                       <div className="flex items-center gap-1">
                         {[3, 5, 10].map((pct) => {
@@ -2074,11 +2077,11 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                   {orders.slice(0, 8).map((ord) => (
                     <div
                       key={ord.id}
-                      className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between text-xs font-mono"
+                      className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between gap-2 text-xs font-mono"
                     >
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 min-w-0">
                         <span
-                          className={`px-1.5 py-0.5 text-[10px] font-bold rounded ${
+                          className={`px-1.5 py-0.5 text-[10px] font-bold rounded shrink-0 ${
                             ord.side === 'BUY'
                               ? 'bg-emerald-100 text-emerald-800'
                               : 'bg-rose-100 text-rose-800'
@@ -2086,14 +2089,14 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                         >
                           {ord.side}
                         </span>
-                        <div>
+                        <div className="min-w-0 truncate">
                           <strong className="text-slate-900">{ord.symbol}</strong>
                           <span className="text-[10px] text-slate-500 ml-1.5">
                             {ord.quantity} Qty · {ord.product} ({ord.type})
                           </span>
                         </div>
                       </div>
-                      <div className="text-right">
+                      <div className="text-right shrink-0 tabular-nums">
                         <div className="font-bold text-slate-900">₹{ord.price.toFixed(2)}</div>
                         <div className="text-[10px] text-slate-500">
                           {ord.timestamp} · Chg ₹{ord.totalCharges.toFixed(2)}
@@ -2136,21 +2139,21 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                     {positions.map((pos) => (
                       <div
                         key={pos.symbol}
-                        className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between text-xs"
+                        className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between gap-2 text-xs"
                       >
-                        <div>
+                        <div className="min-w-0">
                           <div className="font-bold text-slate-900 flex items-center gap-1.5">
                             <span>{pos.symbol}</span>
-                            <span className="text-[10px] font-mono px-1 bg-slate-200 text-slate-700 rounded">
+                            <span className="text-[10px] font-mono px-1 bg-slate-200 text-slate-700 rounded shrink-0">
                               {pos.product}
                             </span>
                           </div>
-                          <span className="text-[11px] text-slate-500 font-mono">
+                          <span className="text-[11px] text-slate-500 font-mono tabular-nums">
                             {pos.quantity} Qty · Avg: ₹{pos.buyAvgPrice}
                           </span>
                         </div>
 
-                        <div className="text-right">
+                        <div className="text-right shrink-0 tabular-nums">
                           <div
                             className={`font-mono font-bold ${
                               pos.pnl >= 0 ? 'text-emerald-600' : 'text-rose-600'
@@ -2195,16 +2198,16 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
 
               {/* Demat Holdings Table */}
               <div className="p-4 sm:p-5 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-3">
-                <div className="flex items-center justify-between">
-                  <div>
+                <div className="flex items-center justify-between gap-2">
+                  <div className="min-w-0">
                     <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 font-mono">
-                      Demat Holdings & IPO Portfolios
+                      Demat Holdings &amp; IPO Portfolios
                     </h4>
-                    <span className="text-[11px] text-slate-500 font-mono">
+                    <span className="text-[11px] text-slate-500 font-mono tabular-nums">
                       Current Value: ₹{totalCurrentHoldings.toLocaleString()}
                     </span>
                   </div>
-                  <span className="font-mono text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                  <span className="font-mono text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 shrink-0 tabular-nums">
                     +{totalHoldingsPnlPercent}%
                   </span>
                 </div>
@@ -2215,16 +2218,16 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                       key={h.symbol}
                       type="button"
                       onClick={() => handleTradeSymbolFromOtherTab(h.symbol)}
-                      className="w-full text-left p-3 bg-slate-50 hover:bg-indigo-50/60 rounded-xl border border-slate-200 hover:border-indigo-300 flex items-center justify-between text-xs transition-colors"
+                      className="w-full text-left p-3 bg-slate-50 hover:bg-indigo-50/60 rounded-xl border border-slate-200 hover:border-indigo-300 flex items-center justify-between gap-2 text-xs transition-colors"
                       title={`Load ${h.symbol} into Order Execution Ticket`}
                     >
-                      <div>
+                      <div className="min-w-0">
                         <strong className="text-slate-900 block">{h.symbol}</strong>
                         <span className="text-[10px] text-slate-500 block truncate max-w-[160px]">{h.companyName}</span>
-                        <span className="text-[10px] font-mono text-slate-600">{h.quantity} Shares</span>
+                        <span className="text-[10px] font-mono text-slate-600 tabular-nums">{h.quantity} Shares</span>
                       </div>
 
-                      <div className="text-right font-mono">
+                      <div className="text-right font-mono shrink-0 tabular-nums">
                         <strong className="text-slate-900 block">₹{h.currentValue.toLocaleString()}</strong>
                         <span className={`text-[11px] font-bold block ${h.totalPnl >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
                           {h.totalPnl >= 0 ? '+' : ''}₹{h.totalPnl.toLocaleString()} ({h.totalPnlPercent >= 0 ? '+' : ''}{h.totalPnlPercent}%)
@@ -2386,7 +2389,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
               </button>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs font-mono">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs font-mono items-end">
               <div className="space-y-1">
                 <label className="text-[11px] font-semibold text-slate-600">Model Type</label>
                 <select
@@ -3040,7 +3043,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                 setActiveTab(target.id);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold rounded-lg border border-indigo-200/80 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold rounded-lg border border-indigo-200/80 transition-colors whitespace-nowrap shrink-0"
             >
               <span>{target.label}</span>
               <ArrowRight className="w-3.5 h-3.5" />

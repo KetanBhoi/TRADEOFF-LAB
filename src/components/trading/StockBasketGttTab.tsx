@@ -118,13 +118,13 @@ export const StockBasketGttTab: React.FC<StockBasketGttTabProps> = ({
         <div className="lg:col-span-7 p-5 rounded-xl bg-white border border-slate-200 space-y-5">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h4 className="text-sm font-bold text-slate-900">1. Multi-Stock Thematic Basket</h4>
-            <div className="flex items-center gap-1 p-1 bg-slate-100 rounded-lg">
+            <div className="flex items-center flex-wrap gap-1 p-1 bg-slate-100 rounded-lg max-w-full">
               {EQUITY_BASKET_TEMPLATES.map((b) => (
                 <button
                   key={b.id}
                   type="button"
                   onClick={() => setSelectedBasketId(b.id)}
-                  className={`px-2.5 py-1 text-[11px] font-semibold rounded transition-colors ${
+                  className={`px-2.5 py-1 text-[11px] font-semibold rounded transition-colors whitespace-nowrap shrink-0 ${
                     selectedBasketId === b.id
                       ? 'bg-white text-slate-950 shadow-2xs'
                       : 'text-slate-600 hover:text-slate-900'
@@ -235,9 +235,9 @@ export const StockBasketGttTab: React.FC<StockBasketGttTabProps> = ({
               2. Arm GTT (One-Cancels-Other) Trigger
             </h4>
 
-            <div className="grid grid-cols-2 gap-3 text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs items-end">
               <div>
-                <label className="text-[11px] font-semibold text-slate-600 block mb-1">
+                <label className="text-[11px] font-semibold text-slate-600 block mb-1 whitespace-nowrap">
                   Symbol
                 </label>
                 <select
@@ -253,7 +253,7 @@ export const StockBasketGttTab: React.FC<StockBasketGttTabProps> = ({
                 </select>
               </div>
               <div>
-                <label className="text-[11px] font-semibold text-slate-600 block mb-1">
+                <label className="text-[11px] font-semibold text-slate-600 block mb-1 whitespace-nowrap">
                   Shares Qty
                 </label>
                 <input
@@ -266,7 +266,7 @@ export const StockBasketGttTab: React.FC<StockBasketGttTabProps> = ({
                 />
               </div>
               <div>
-                <label className="text-[11px] font-semibold text-emerald-700 block mb-1">
+                <label className="text-[11px] font-semibold text-emerald-700 block mb-1 whitespace-nowrap">
                   Target Gain (+%)
                 </label>
                 <input
@@ -280,7 +280,7 @@ export const StockBasketGttTab: React.FC<StockBasketGttTabProps> = ({
                 />
               </div>
               <div>
-                <label className="text-[11px] font-semibold text-rose-700 block mb-1">
+                <label className="text-[11px] font-semibold text-rose-700 block mb-1 whitespace-nowrap">
                   Stop-Loss (-%)
                 </label>
                 <input
