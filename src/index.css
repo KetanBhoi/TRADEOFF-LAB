@@ -39,6 +39,35 @@
   animation: moduleEnter 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+@keyframes uiFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes uiZoomIn95 {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-in.fade-in {
+  animation: uiFadeIn 0.16s ease-out both;
+}
+
+.animate-in.zoom-in-95,
+.animate-in.fade-in.zoom-in-95 {
+  animation: uiZoomIn95 0.16s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

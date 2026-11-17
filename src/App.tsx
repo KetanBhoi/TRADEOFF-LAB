@@ -650,7 +650,7 @@ export default function App() {
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         {/* Executive Decision Workflow & Status Bar */}
-        <div className="bg-white rounded-xl p-3 px-4 border border-slate-200/90 shadow-2xs flex flex-col xl:flex-row xl:items-center justify-between gap-3 text-xs">
+        <div className="bg-white rounded-xl p-3 px-4 border border-slate-200/90 shadow-2xs flex flex-col 2xl:flex-row 2xl:items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="flex items-center gap-1.5 shrink-0">
               <span className="w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-100" />

@@ -1088,7 +1088,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
   return (
     <div className="space-y-6">
       {/* Scenario Brief Header Callout */}
-      <div className="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4">
+      <div className="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex flex-col 2xl:flex-row items-start 2xl:items-center justify-between gap-4">
         <div className="min-w-0">
           <div className="flex items-center gap-2 mb-1.5 flex-wrap">
             <span className="px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-900 text-white rounded whitespace-nowrap">
@@ -1112,7 +1112,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
         </div>
 
         {/* Global Trading Header Actions */}
-        <div className="flex items-center gap-2 shrink-0 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap 2xl:justify-end">
           <button
             type="button"
             onClick={() => setIsEducationModalOpen(true)}
@@ -1350,7 +1350,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
             </button>
           ))}
         </div>
-        <span className="text-[11px] text-slate-500 font-mono whitespace-nowrap shrink-0">
+        <span className="text-[11px] text-slate-500 font-mono leading-relaxed sm:whitespace-nowrap">
           Tip: Press J (Search), ? (Shortcuts), F (Pause Feed), Alt+1..6 (Pins)
         </span>
       </div>
@@ -1489,7 +1489,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                     key={`pin-${m.id}`}
                     type="button"
                     onClick={() => setActiveTab(m.id as TradingTabId)}
-                    className={`px-2.5 py-1 text-[11px] font-semibold rounded-md transition-colors whitespace-nowrap border ${
+                    className={`px-2.5 py-1 text-[11px] font-semibold rounded-md transition-colors whitespace-nowrap shrink-0 border ${
                       isActive
                         ? 'bg-amber-600 text-white border-amber-600 shadow-2xs font-bold'
                         : 'bg-amber-50/70 text-amber-900 border-amber-200/80 hover:bg-amber-100'
@@ -1513,7 +1513,7 @@ export const TradingScenario: React.FC<TradingScenarioProps> = ({
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
+                  className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
                     isActive
                       ? 'bg-slate-900 text-white shadow-2xs font-bold'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'

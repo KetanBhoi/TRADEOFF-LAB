@@ -172,7 +172,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Zone 2: Segmented Scenario Navigation Controls */}
-        <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 p-1 bg-slate-100/90 rounded-lg border border-slate-200/80 min-w-0">
+        <nav className="hidden xl:flex items-center gap-0.5 2xl:gap-1 p-1 bg-slate-100/90 rounded-lg border border-slate-200/80 min-w-0 max-w-full overflow-x-auto no-scrollbar">
           {scenarios.map((sc) => {
             const isActive = activeScenario === sc.id;
             return (
@@ -180,7 +180,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 key={sc.id}
                 type="button"
                 onClick={() => onSelectScenario(sc.id)}
-                className={`px-2 xl:px-2.5 py-1.5 text-[11px] xl:text-xs font-semibold rounded-md transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
+                className={`px-2 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-xs font-semibold rounded-md transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
                   isActive
                     ? 'bg-white text-slate-950 shadow-2xs font-bold border border-slate-200/90'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
@@ -202,7 +202,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             title="Open Command Palette (Press ⌘K or /)"
           >
             <Search className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-            <span className="hidden xl:inline text-slate-600">Commands</span>
+            <span className="hidden 2xl:inline text-slate-600">Commands</span>
             <kbd className="hidden sm:inline-flex items-center justify-center px-1.5 py-0.5 text-[9px] font-mono font-bold bg-white text-slate-700 border border-slate-200 rounded">
               ⌘K
             </kbd>
@@ -263,7 +263,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Download className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
             <span className="hidden sm:inline font-bold">Export</span>
-            <kbd className="hidden xl:inline-flex items-center justify-center px-1.5 py-0.5 text-[9px] font-mono font-bold bg-white text-emerald-800 border border-emerald-200 rounded">
+            <kbd className="hidden 2xl:inline-flex items-center justify-center px-1.5 py-0.5 text-[9px] font-mono font-bold bg-white text-emerald-800 border border-emerald-200 rounded">
               E
             </kbd>
           </button>
@@ -276,13 +276,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             title="View last 5 configurations & checkpoints (Press 'H')"
           >
             <History className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-            <span className="hidden xl:inline">History</span>
+            <span className="hidden 2xl:inline">History</span>
             {historyCount > 0 && (
               <span className="font-mono text-[10px] text-slate-700 bg-slate-100 px-1 py-0.5 rounded border border-slate-200">
                 {historyCount}
               </span>
             )}
-            <kbd className="hidden xl:inline-flex items-center justify-center px-1.5 py-0.5 text-[9px] font-mono font-bold bg-slate-100 text-slate-600 border border-slate-200 rounded">
+            <kbd className="hidden 2xl:inline-flex items-center justify-center px-1.5 py-0.5 text-[9px] font-mono font-bold bg-slate-100 text-slate-600 border border-slate-200 rounded">
               H
             </kbd>
           </button>
@@ -302,12 +302,12 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Sub-Header Bar: Dedicated Theme & Workspace Selector Under the First Header */}
       <div className="bg-slate-50/95 backdrop-blur-md border-t border-slate-200/90 px-4 sm:px-6 lg:px-8 py-2">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-2.5">
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 min-w-0">
+          <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 min-w-0 shrink-0">
             <span className="p-1 rounded-md bg-white border border-slate-200 text-indigo-600 shadow-2xs shrink-0">
               <Palette className="w-3.5 h-3.5" />
             </span>
             <span className="whitespace-nowrap">Workspace Theme Palette:</span>
-            <span className="text-[11px] font-mono text-slate-500 font-normal hidden sm:inline truncate">
+            <span className="text-[11px] font-mono text-slate-500 font-normal hidden 2xl:inline truncate">
               Select cognitive visual palette for graphs, accents &amp; analytics
             </span>
           </div>
@@ -317,7 +317,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Mobile/Tablet Scenario Navigation Bar */}
-      <div className="lg:hidden flex items-center overflow-x-auto px-4 py-2 bg-slate-50 border-t border-slate-200 gap-1.5 no-scrollbar">
+      <div className="xl:hidden flex items-center overflow-x-auto px-4 sm:px-6 py-2 bg-slate-50 border-t border-slate-200 gap-1.5 no-scrollbar">
         {scenarios.map((sc) => {
           const isActive = activeScenario === sc.id;
           return (

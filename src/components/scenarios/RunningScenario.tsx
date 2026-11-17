@@ -153,7 +153,7 @@ export const RunningScenario: React.FC<RunningScenarioProps> = ({
   return (
     <div className="space-y-6">
       {/* Scenario Brief Header Callout */}
-      <div className="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+      <div className="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4">
         <div className="min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-700 rounded border border-slate-200 whitespace-nowrap">
@@ -172,7 +172,7 @@ export const RunningScenario: React.FC<RunningScenarioProps> = ({
         </div>
 
         {/* Scenario-Specific Quick Presets & Tools */}
-        <div className="flex items-center gap-1.5 shrink-0 flex-wrap">
+        <div className="flex items-center gap-1.5 flex-wrap xl:justify-end">
           {onOpenPresets && (
             <button
               type="button"
